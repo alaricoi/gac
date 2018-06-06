@@ -1,0 +1,1 @@
+2018-01-08 23:38:41,026 [main] ERROR t2.t2App - org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing database (near " ": syntax error)
