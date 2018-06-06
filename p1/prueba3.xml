@@ -1,0 +1,1 @@
+<port>3030</port><host>localhost</host><mongodb>mongodb://localhost:27017/api</mongodb><public>../public/</public><paginate><max>50</max><default>10</default></paginate>

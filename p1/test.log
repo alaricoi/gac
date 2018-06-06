@@ -1,0 +1,1 @@
+2018-01-02 14:41:00,646 ERROR p.p1App [AWT-EventQueue-0] org.json.JSONException: A JSONObject text must begin with '{' at 1 [character 2 line 1]

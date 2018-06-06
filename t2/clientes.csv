@@ -1,0 +1,11 @@
+ID_CLIENTE;DS_NOMBRE;DS_EMAIL;DS_DIRECCION;NM_TELEFONO;PASSWORD;FC_ALTA;FC_BAJA
+1;david;dhernanzm@gmail.com;PASEO DEMOCRACIA 19;655179785;47bce5c74f589f4867dbd57e9ca9f808;2017-10-11 13:26:45.0;null
+3;isma;ismael@mm.com;wwwwww;44444;c4ca4238a0b923820dcc509a6f75849b;2017-10-17 00:34:26.0;null
+4;vvvvv;vvvv@dddd.com;fffff;444444;c81e728d9d4c2f636f067f89cc14862c;2017-12-12 00:07:21.0;null
+5;222;222@rr.com;ee;0;c4ca4238a0b923820dcc509a6f75849b;2017-12-12 00:08:19.0;null
+6;dddddddddd;ddd@ddd.com;dddddd@ddd.co,;1;c4ca4238a0b923820dcc509a6f75849b;2017-12-12 00:10:43.0;null
+7;ddd;ddd@ee.com;1111;1111;c4ca4238a0b923820dcc509a6f75849b;2017-12-12 00:11:54.0;null
+8;ssssssssssss;ddd@ddd.comr;sssssssss;2147483647;c4ca4238a0b923820dcc509a6f75849b;2017-12-12 00:25:24.0;null
+9;ssssssssssss;ddd@ddd.comrf;sssssssss;2147483647;c4ca4238a0b923820dcc509a6f75849b;2017-12-12 00:28:43.0;null
+10;dddd;ddddd@dd.com;asdasdasd;11233;c4ca4238a0b923820dcc509a6f75849b;2017-12-12 00:30:25.0;null
+11;isma;alaricoi@gmail.com;alaricoi@gmail.com;111111;0cc175b9c0f1b6a831c399e269772661;2017-12-13 22:38:41.0;null
