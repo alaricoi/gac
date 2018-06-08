@@ -11,13 +11,16 @@ import java.util.Properties;
 
 import org.apache.commons.lang.WordUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 
 
 
 public class LecturaPlantilla {
-
+	private static final Logger logger = LogManager.getLogger(t3App.class);
+	
     public void cargaPlatilla(String plantilla, DatosCrud crud){
     	ClassLoader cLoader = this.getClass().getClassLoader();
     	  InputStream input = cLoader.getResourceAsStream("conf/template.properties");
@@ -29,7 +32,8 @@ public class LecturaPlantilla {
             for (String pl : plantillas ){
                String e  = cargaFichero("template/"+ plantilla + "/" + pl);
                String s =  trataPlantilla(e, crud);
-               System.out.println(s);
+             
+                logger.info(s);
             }
 
 
@@ -46,15 +50,15 @@ public class LecturaPlantilla {
     
         try
            { 
-        	 System.out.println("buscando " + plantilla);
+        	  logger.info("buscando " + plantilla);
         	File file = new File(cLoader.getResource(plantilla).getFile());
-       	 System.out.println("File Found : " + file.exists());
+       	  logger.info("File Found : " + file.exists());
         	 // Read File Content
             String content = new String(Files.readAllBytes(file.toPath()));
             return content;
            }
         catch (IOException e) {
-        	 System.out.println("File no found " + plantilla);
+        	  logger.info("File no found " + plantilla);
         	 throw e;
 		}
         // File is found

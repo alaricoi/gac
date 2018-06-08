@@ -1,17 +1,17 @@
 package t3;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.Types;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,16 +21,12 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Cursor;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.layout.FormAttachment;
-import org.eclipse.swt.layout.FormData;
-import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
@@ -38,6 +34,9 @@ import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.SWTResourceManager;
+
+
+
 
 class ConexionBean {
 	private String driver;
@@ -97,7 +96,17 @@ class ConexionBean {
 }
 
 public class t3App {
-
+	private final Map<Integer,String> TRANSLADAS_TIPOS = new HashMap<Integer,String>() {{
+	    put(Types.VARCHAR, "String");
+	    put(Types.NVARCHAR, "String");
+	    put(Types.CHAR, "String");
+	    put(Types.NCHAR, "String");
+	    put(Types.INTEGER, "Integer");
+	    put(Types.DATE, "Date");
+	    put(Types.TIMESTAMP, "Timestamp");
+	    put(Types.FLOAT,"Float");
+	    put(Types.DOUBLE,"Double");
+	}};
 	protected Shell shlGacPrctica;
 	private Text tCadenaConex;
 	private Text tUsu;
@@ -105,11 +114,10 @@ public class t3App {
 	private Combo comboTablas;
 	// Elemento de log4j para el control de loger de la aplciación
 	private static final Logger logger = LogManager.getLogger(t3App.class);
-	private Text tWhere;
 	private Combo comboTipo;
 	private ConexionBean conexionBean;
-	private Label lblSalida;
-
+	private Text tClave;
+	private Combo comboLenguaje;
 	/**
 	 * Launch the application.
 	 * 
@@ -130,13 +138,13 @@ public class t3App {
 	public void open() {
 		Display display = Display.getDefault();
 		createContents();
-		
-		Monitor primary = display.getPrimaryMonitor ();
-		Rectangle bounds = primary.getBounds ();
-		Rectangle rect = shlGacPrctica.getBounds ();
+
+		Monitor primary = display.getPrimaryMonitor();
+		Rectangle bounds = primary.getBounds();
+		Rectangle rect = shlGacPrctica.getBounds();
 		int x = bounds.x + (bounds.width - rect.width) / 2;
 		int y = bounds.y + (bounds.height - rect.height) / 2;
-		shlGacPrctica.setLocation (x, y);
+		shlGacPrctica.setLocation(x, y);
 		shlGacPrctica.open();
 		shlGacPrctica.layout();
 		while (!shlGacPrctica.isDisposed()) {
@@ -153,7 +161,7 @@ public class t3App {
 
 		shlGacPrctica = new Shell();
 		shlGacPrctica.setImage(SWTResourceManager.getImage("/img/th.jpg"));
-		shlGacPrctica.setSize(616, 503);
+		shlGacPrctica.setSize(721, 503);
 		shlGacPrctica.setText("G.A.C. Pr\u00E1ctica 3");
 		shlGacPrctica.setLayout(new FillLayout(SWT.VERTICAL));
 
@@ -180,6 +188,7 @@ public class t3App {
 		lblCadenaDeConesn.setText("Cadena de Conexi\u00F3n");
 
 		tCadenaConex = new Text(composite, SWT.BORDER);
+		tCadenaConex.setText("D:\\workspace\\t3\\data\\test.db");
 		tCadenaConex.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
 		Label lblUsuario = new Label(composite, SWT.NONE);
@@ -187,10 +196,10 @@ public class t3App {
 
 		tUsu = new Text(composite, SWT.BORDER);
 		tUsu.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		
+
 		Label lblContrasea = new Label(composite, SWT.NONE);
 		lblContrasea.setText("Contrase\u00F1a");
-	
+
 		tPass = new Text(composite, SWT.BORDER | SWT.PASSWORD);
 		tPass.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
@@ -198,7 +207,7 @@ public class t3App {
 		btnConectar.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				lblSalida.setText("");
+
 				Cursor waitCursor = new Cursor(shlGacPrctica.getDisplay(), SWT.CURSOR_WAIT);
 				try {
 					shlGacPrctica.setCursor(waitCursor);
@@ -218,64 +227,106 @@ public class t3App {
 		grpSeleccionaLaTabla.setText("Selecciona la tabla");
 		grpSeleccionaLaTabla.setLayout(new GridLayout(2, false));
 
+		Label lblPlantilla = new Label(grpSeleccionaLaTabla, SWT.NONE);
+		lblPlantilla.setText("Tipo Plantilla");
+
+		comboLenguaje = new Combo(grpSeleccionaLaTabla, SWT.NONE);
+		comboLenguaje.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
+		// cargamos las plantillas
+		ClassLoader cLoader = this.getClass().getClassLoader();
+		InputStream input = cLoader.getResourceAsStream("conf/template.properties");
+		Properties prop = new Properties();
+		try {
+			prop.load(input);
+			Set<Object> keys = prop.keySet();
+			for (Object k : keys) {
+				comboLenguaje.add((String) k);
+			}
+		} catch (IOException e1) {
+
+			logger.error(e1);
+		}
 		Label lblTabla = new Label(grpSeleccionaLaTabla, SWT.NONE);
 		lblTabla.setText("Tabla");
 
 		comboTablas = new Combo(grpSeleccionaLaTabla, SWT.NONE);
 		comboTablas.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
-		Label lblWhere = new Label(grpSeleccionaLaTabla, SWT.NONE);
-		lblWhere.setText("where");
+		Label lblclave = new Label(grpSeleccionaLaTabla, SWT.NONE);
+		lblclave.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		lblclave.setText("clave Primaria");
 
-		tWhere = new Text(grpSeleccionaLaTabla,
-				SWT.BORDER | SWT.WRAP | SWT.H_SCROLL | SWT.V_SCROLL | SWT.CANCEL | SWT.MULTI);
-		GridData gd_tWhere = new GridData(SWT.FILL, SWT.TOP, true, false, 1, 1);
-		gd_tWhere.heightHint = 49;
-		tWhere.setLayoutData(gd_tWhere);
+		tClave = new Text(grpSeleccionaLaTabla, SWT.BORDER);
+		tClave.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		new Label(grpSeleccionaLaTabla, SWT.NONE);
 		new Label(grpSeleccionaLaTabla, SWT.NONE);
-		
+
 		Button btnNewButton = new Button(grpSeleccionaLaTabla, SWT.NONE);
+		btnNewButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		btnNewButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				if (conexionBean == null) {
+
+					muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error",
+							"Para realizar este paso hace falta conectarse previamente");
+					
+					logger.error("No hay conexión creada");
+					return;
+				}
+				LecturaPlantilla plantilla = new LecturaPlantilla();
+
+				DatosCrud crud = new DatosCrud();
+				crud.setTabla(comboTablas.getText());
+				crud.setConexionBd(conexionBean.getSufijo()+ conexionBean.getCadena());
+				crud.setUsuarioBd(conexionBean.getUsu());
+				crud.setClaveBd(conexionBean.getPass());
+				crud.setNombreClave(tClave.getText());
+				ResultSet rs = null;
+				Connection conn = dameConexion(conexionBean);
+				try {
+					
+					// Si no obtenemos conexión salimos del método
+					if (conn == null) {
+						return;
+					}
+					
+					try {
+						DatabaseMetaData metaDatos = conn.getMetaData();
+						rs = metaDatos.getColumns(null, null, comboTablas.getText(), null);
+						Map<String, String> map = new HashMap<String, String>();
+						while (rs.next()) {
+						  map.putIfAbsent(rs.getString("COLUMN_NAME"),TRANSLADAS_TIPOS.get(rs.getInt("DATA_TYPE")));
+						} 
+						crud.setCampos(map);
+
+						plantilla.cargaPlatilla(comboLenguaje.getText(), crud);
+						muestraDialogoModal(SWT.ICON_INFORMATION | SWT.OK, "Información", "Creada la plantilla");
+					} catch (SQLException e1) {
+						logger.error(e1);
+						muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error", "No se ha podido crear la conexión");
+						return;
+					}
+					
+					
+				} finally {
+					try {
+						if (rs != null)
+							rs.close();
+						if (conn != null)
+							conn.close();
+					} catch (SQLException e1) {
+						logger.error(e1);
+						muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error", "No se ha podido crear la conexión");
+						return;
+					}
+				}
 				
-				LecturaPlantilla  plantilla = new LecturaPlantilla();
-			  
-			      DatosCrud crud = new DatosCrud();
-			    crud.setTabla("cAMPANA");
-			    crud.setConexionBd("mysql.asdada");
-			    crud.setUsuarioBd("root");
-			    crud.setClaveBd("");
-			    crud.setNombreClave("ID_CAMPO");
-			    Map<String, String> map = new HashMap<String, String>();
-			    map.putIfAbsent("ID_CAMPO", "Integer");
-			    map.putIfAbsent("DS_CAMPO", "String");
-			    crud.setCampos(map);
-
-			    plantilla.cargaPlatilla("java", crud);
-			    System.out.println("---------------------------");
-			    plantilla.cargaPlatilla("php", crud);
-
-
-			  
 
 			}
 		});
-		btnNewButton.setText("New Button");
+		btnNewButton.setText("Generar");
 		new Label(grpSeleccionaLaTabla, SWT.NONE);
-
-		Group grpSalida = new Group(shlGacPrctica, SWT.NONE);
-		grpSalida.setText("Salida");
-		grpSalida.setLayout(new FormLayout());
-
-		lblSalida = new Label(grpSalida, SWT.NONE);
-		lblSalida.setText("\t\t\t\t\t\t");
-		lblSalida.setFont(SWTResourceManager.getFont("Segoe UI", 12, SWT.NORMAL));
-		FormData fd_lblSalida = new FormData();
-		fd_lblSalida.left = new FormAttachment(0, 10);
-		fd_lblSalida.top = new FormAttachment(0, 5);
-		lblSalida.setLayoutData(fd_lblSalida);
 
 	}
 
@@ -301,9 +352,9 @@ public class t3App {
 			Class.forName(con.getDriver());
 
 		} catch (ClassNotFoundException e1) {
-			muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error", 
+			muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error",
 					"No se ha podido crear la conexión: " + e1.getMessage());
-		
+
 			logger.error(e1);
 		}
 		Connection conexion = null;
@@ -313,7 +364,7 @@ public class t3App {
 		} catch (SQLException e1) {
 			muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error",
 					"No se ha podido crear la conexión: " + e1.getMessage());
-			
+
 			logger.error(e1);
 		}
 		return conexion;
@@ -362,8 +413,8 @@ public class t3App {
 
 			}
 			muestraDialogoModal(SWT.ICON_INFORMATION | SWT.OK, "Información", "Creada la conexión");
-			comboTablas.setFocus();
-			
+			comboLenguaje.setFocus();
+
 		} catch (SQLException e1) {
 			muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error", "No se ha podido crear la conexión");
 			logger.error(e1);
@@ -383,11 +434,12 @@ public class t3App {
 	 * A partir de la tabla seleccionada y la base de datos conectada se ejecuta
 	 */
 
-	
 	private void muestraDialogoModal(int estilo, String titulo, String texto) {
 		MessageBox messageBox = new MessageBox(shlGacPrctica, estilo);
 		messageBox.setText(titulo);
 		messageBox.setMessage(texto);
 		messageBox.open();
 	}
+	
+	
 }
