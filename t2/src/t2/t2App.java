@@ -152,7 +152,7 @@ public class t2App {
 	protected void createContents() {
 
 		shlGacPrctica = new Shell();
-		shlGacPrctica.setImage(SWTResourceManager.getImage("D:\\workspace\\t2\\img\\th.jpg"));
+		shlGacPrctica.setImage(SWTResourceManager.getImage("img/th.jpg"));
 		shlGacPrctica.setSize(616, 503);
 		shlGacPrctica.setText("G.A.C. Pr\u00E1ctica 2");
 		shlGacPrctica.setLayout(new FillLayout(SWT.VERTICAL));

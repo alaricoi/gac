@@ -39,8 +39,8 @@ public class t1App {
 	private Button bFileOrigen;
 	private Button btnSeleccionaXmlSalida;
 	
-	// Elemento de log4j para el control de loger de la aplciación
-		private static final Logger logger = LogManager.getLogger(t1App.class);
+	// Elemento de log4j para el control de loger de la apliciación
+	private static final Logger logger = LogManager.getLogger(t1App.class);
 	/**
 	 * Launch the application.
 	 * @param args
@@ -74,7 +74,7 @@ public class t1App {
 	 */
 	protected void createContents() {
 		shlPrcticaGac = new Shell();
-		shlPrcticaGac.setImage(SWTResourceManager.getImage("D:\\workspace\\t2\\img\\th.jpg"));
+		shlPrcticaGac.setImage(SWTResourceManager.getImage("img/th.jpg"));
 		shlPrcticaGac.setSize(652, 441);
 		shlPrcticaGac.setText("Pr\u00E1ctica 1 G.A.C.");
 		shlPrcticaGac.setLayout(new FormLayout());
@@ -166,18 +166,7 @@ public class t1App {
 	}
 	
 	
-	/**
-	 * Habilita o deshabilita el botón de creación de XML dependiendo si estan
-	 * seleccionados tanto la entrada como la salida
-	 */
-	/*private void activaCrearXML() {
-
-		if (!tOrigen.getText().equals("") && !tSalida.getText().equals(""))
-			bCrearXML.setEnabled(true);
-		else
-			bCrearXML.setEnabled(false);
-	}
-*/
+	
 	/**
 	 * Abre un dialogo de selección de fichero y guarda el path seleccionado en
 	 * la caja de texto de origen

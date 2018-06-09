@@ -1,0 +1,5 @@
+2018-06-09 22:51:50,185 [main] ERROR t1.t1App - org.json.JSONException: Expected a ',' or ']' at 1000490 [character 1 line 38536]
+2018-06-09 23:37:07,308 [main] ERROR t1.t1App - org.json.JSONException: A JSONObject text must begin with '{' at 1 [character 2 line 1]
+2018-06-09 23:39:05,425 [main] ERROR t1.t1App - org.json.JSONException: Expected a ',' or '}' at 21 [character 2 line 3]
+2018-06-09 23:39:47,634 [main] ERROR t1.t1App - org.json.JSONException: Expected a ',' or '}' at 21 [character 2 line 3]
+2018-06-09 23:43:07,728 [main] ERROR t1.t1App - org.json.JSONException: Expected a ',' or '}' at 21 [character 2 line 3]
