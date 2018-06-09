@@ -26,7 +26,9 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
@@ -34,6 +36,11 @@ import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.SWTResourceManager;
+import org.eclipse.ui.forms.widgets.FormToolkit;
+import org.eclipse.ui.forms.widgets.Section;
+import org.eclipse.swt.layout.FormLayout;
+import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.layout.FormAttachment;
 
 
 
@@ -118,6 +125,8 @@ public class t3App {
 	private ConexionBean conexionBean;
 	private Text tClave;
 	private Combo comboLenguaje;
+	private final FormToolkit formToolkit = new FormToolkit(Display.getDefault());
+	private Text tSalida;
 	/**
 	 * Launch the application.
 	 * 
@@ -161,77 +170,162 @@ public class t3App {
 
 		shlGacPrctica = new Shell();
 		shlGacPrctica.setImage(SWTResourceManager.getImage("/img/th.jpg"));
-		shlGacPrctica.setSize(721, 503);
+		shlGacPrctica.setSize(871, 503);
 		shlGacPrctica.setText("G.A.C. Pr\u00E1ctica 3");
 		shlGacPrctica.setLayout(new FillLayout(SWT.VERTICAL));
+				
+						Group grpSeleccionDeTipo = new Group(shlGacPrctica, SWT.NONE);
+						grpSeleccionDeTipo.setText("Selecci\u00F3n base de datos");
+						grpSeleccionDeTipo.setLayout(new FillLayout(SWT.VERTICAL));
+						
+								Composite composite = new Composite(grpSeleccionDeTipo, SWT.NONE);
+								GridLayout gl_composite = new GridLayout(2, false);
+								composite.setLayout(gl_composite);
+								
+										Label lblNewLabel = new Label(composite, SWT.NONE);
+										lblNewLabel.setText("Tipo ");
+										
+												comboTipo = new Combo(composite, SWT.NONE);
+												comboTipo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+												comboTipo.setItems(new String[] { "SQLite", "MySQL" });
+												comboTipo.select(0);
+												
+														Label lblCadenaDeConesn = new Label(composite, SWT.NONE);
+														lblCadenaDeConesn.setText("Cadena de Conexi\u00F3n");
+														
+																tCadenaConex = new Text(composite, SWT.BORDER);
+																tCadenaConex.setText("D:\\workspace\\t3\\data\\test.db");
+																tCadenaConex.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+																
+																		Label lblUsuario = new Label(composite, SWT.NONE);
+																		lblUsuario.setText("Usuario");
+																		
+																				tUsu = new Text(composite, SWT.BORDER);
+																				tUsu.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+																				
+																						Label lblContrasea = new Label(composite, SWT.NONE);
+																						lblContrasea.setText("Contrase\u00F1a");
+																						
+																								tPass = new Text(composite, SWT.BORDER | SWT.PASSWORD);
+																								tPass.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+																								
+																										Button btnConectar = new Button(composite, SWT.NONE);
+																										btnConectar.addSelectionListener(new SelectionAdapter() {
+																											@Override
+																											public void widgetSelected(SelectionEvent e) {
+
+																												Cursor waitCursor = new Cursor(shlGacPrctica.getDisplay(), SWT.CURSOR_WAIT);
+																												try {
+																													shlGacPrctica.setCursor(waitCursor);
+																													rellenaComboTablas();
+																												} finally {
+																													shlGacPrctica.setCursor(null);
+																													waitCursor.dispose();
+																												}
+																											}
+
+																										});
+																										btnConectar.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+																										btnConectar.setText("Conectar");
+																										new Label(composite, SWT.NONE);
+		
+				Group grpSeleccionaLaTabla = new Group(shlGacPrctica, SWT.NONE);
+				grpSeleccionaLaTabla.setText("Selecciona la tabla");
+				grpSeleccionaLaTabla.setLayout(new FormLayout());
+				
+						Label lblPlantilla = new Label(grpSeleccionaLaTabla, SWT.NONE);
+						FormData fd_lblPlantilla = new FormData();
+						fd_lblPlantilla.top = new FormAttachment(0, 9);
+						fd_lblPlantilla.left = new FormAttachment(0, 5);
+						lblPlantilla.setLayoutData(fd_lblPlantilla);
+						lblPlantilla.setText("Tipo Plantilla");
+						
+								comboLenguaje = new Combo(grpSeleccionaLaTabla, SWT.NONE);
+								FormData fd_comboLenguaje = new FormData();
+								fd_comboLenguaje.right = new FormAttachment(0, 417);
+								fd_comboLenguaje.top = new FormAttachment(0, 5);
+								fd_comboLenguaje.left = new FormAttachment(0, 84);
+								comboLenguaje.setLayoutData(fd_comboLenguaje);
+								Label lblTabla = new Label(grpSeleccionaLaTabla, SWT.NONE);
+								FormData fd_lblTabla = new FormData();
+								fd_lblTabla.top = new FormAttachment(0, 37);
+								fd_lblTabla.left = new FormAttachment(0, 5);
+								lblTabla.setLayoutData(fd_lblTabla);
+								lblTabla.setText("Tabla");
+								
+										comboTablas = new Combo(grpSeleccionaLaTabla, SWT.NONE);
+										FormData fd_comboTablas = new FormData();
+										fd_comboTablas.right = new FormAttachment(0, 417);
+										fd_comboTablas.top = new FormAttachment(0, 33);
+										fd_comboTablas.left = new FormAttachment(0, 84);
+										comboTablas.setLayoutData(fd_comboTablas);
+										
+												Label lblclave = new Label(grpSeleccionaLaTabla, SWT.NONE);
+												FormData fd_lblclave = new FormData();
+												fd_lblclave.top = new FormAttachment(0, 64);
+												fd_lblclave.left = new FormAttachment(0, 5);
+												lblclave.setLayoutData(fd_lblclave);
+												lblclave.setText("clave Primaria");
+												
+														tClave = new Text(grpSeleccionaLaTabla, SWT.BORDER);
+														FormData fd_tClave = new FormData();
+														fd_tClave.right = new FormAttachment(0, 417);
+														fd_tClave.top = new FormAttachment(0, 61);
+														fd_tClave.left = new FormAttachment(0, 84);
+														tClave.setLayoutData(fd_tClave);
+														
+														Label lblPathDeSalida = new Label(grpSeleccionaLaTabla, SWT.NONE);
+														FormData fd_lblPathDeSalida = new FormData();
+														fd_lblPathDeSalida.top = new FormAttachment(0, 90);
+														fd_lblPathDeSalida.left = new FormAttachment(0, 5);
+														lblPathDeSalida.setLayoutData(fd_lblPathDeSalida);
+														lblPathDeSalida.setText("Path de Salida");
+														formToolkit.adapt(lblPathDeSalida, true, true);
+														
+														tSalida = new Text(grpSeleccionaLaTabla, SWT.BORDER);
+														FormData fd_tSalida = new FormData();
+														fd_tSalida.right = new FormAttachment(0, 417);
+														fd_tSalida.top = new FormAttachment(0, 87);
+														fd_tSalida.left = new FormAttachment(0, 84);
+														tSalida.setLayoutData(fd_tSalida);
+														formToolkit.adapt(tSalida, true, true);
+														
+																Button btnNewButton = new Button(grpSeleccionaLaTabla, SWT.NONE);
+																FormData fd_btnNewButton = new FormData();
+																fd_btnNewButton.right = new FormAttachment(0, 316);
+																fd_btnNewButton.top = new FormAttachment(0, 113);
+																fd_btnNewButton.left = new FormAttachment(0, 184);
+																btnNewButton.setLayoutData(fd_btnNewButton);
+																btnNewButton.addSelectionListener(new SelectionAdapter() {
+																	@Override
+																	public void widgetSelected(SelectionEvent e) {
+																		trataPlantilla();
+																		
+
+																	}
+																});
+																btnNewButton.setText("Generar C\u00F3digo");
+																
+																Button btnSeleccionaPath = new Button(grpSeleccionaLaTabla, SWT.NONE);
+																btnSeleccionaPath.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				String fileName = abreDialogoSalida(SWT.SAVE);
+				tSalida.setText(fileName);
+			}
+																});
+																FormData fd_btnSeleccionaPath = new FormData();
+																fd_btnSeleccionaPath.top = new FormAttachment(lblPathDeSalida, -5, SWT.TOP);
+																fd_btnSeleccionaPath.left = new FormAttachment(tSalida, 6);
+																btnSeleccionaPath.setLayoutData(fd_btnSeleccionaPath);
+																formToolkit.adapt(btnSeleccionaPath, true, true);
+																btnSeleccionaPath.setText("Selecciona Path");
 
 		Composite composite_1 = new Composite(shlGacPrctica, SWT.NONE);
 		composite_1.setLayout(new FillLayout(SWT.HORIZONTAL));
-
-		Group grpSeleccionDeTipo = new Group(composite_1, SWT.NONE);
-		grpSeleccionDeTipo.setText("Selecci\u00F3n base de datos");
-		grpSeleccionDeTipo.setLayout(new FillLayout(SWT.VERTICAL));
-
-		Composite composite = new Composite(grpSeleccionDeTipo, SWT.NONE);
-		GridLayout gl_composite = new GridLayout(2, false);
-		composite.setLayout(gl_composite);
-
-		Label lblNewLabel = new Label(composite, SWT.NONE);
-		lblNewLabel.setText("Tipo ");
-
-		comboTipo = new Combo(composite, SWT.NONE);
-		comboTipo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		comboTipo.setItems(new String[] { "SQLite", "MySQL" });
-		comboTipo.select(0);
-
-		Label lblCadenaDeConesn = new Label(composite, SWT.NONE);
-		lblCadenaDeConesn.setText("Cadena de Conexi\u00F3n");
-
-		tCadenaConex = new Text(composite, SWT.BORDER);
-		tCadenaConex.setText("D:\\workspace\\t3\\data\\test.db");
-		tCadenaConex.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-
-		Label lblUsuario = new Label(composite, SWT.NONE);
-		lblUsuario.setText("Usuario");
-
-		tUsu = new Text(composite, SWT.BORDER);
-		tUsu.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-
-		Label lblContrasea = new Label(composite, SWT.NONE);
-		lblContrasea.setText("Contrase\u00F1a");
-
-		tPass = new Text(composite, SWT.BORDER | SWT.PASSWORD);
-		tPass.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-
-		Button btnConectar = new Button(composite, SWT.NONE);
-		btnConectar.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-
-				Cursor waitCursor = new Cursor(shlGacPrctica.getDisplay(), SWT.CURSOR_WAIT);
-				try {
-					shlGacPrctica.setCursor(waitCursor);
-					rellenaComboTablas();
-				} finally {
-					shlGacPrctica.setCursor(null);
-					waitCursor.dispose();
-				}
-			}
-
-		});
-		btnConectar.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		btnConectar.setText("Conectar");
-		new Label(composite, SWT.NONE);
-
-		Group grpSeleccionaLaTabla = new Group(composite_1, SWT.NONE);
-		grpSeleccionaLaTabla.setText("Selecciona la tabla");
-		grpSeleccionaLaTabla.setLayout(new GridLayout(2, false));
-
-		Label lblPlantilla = new Label(grpSeleccionaLaTabla, SWT.NONE);
-		lblPlantilla.setText("Tipo Plantilla");
-
-		comboLenguaje = new Combo(grpSeleccionaLaTabla, SWT.NONE);
-		comboLenguaje.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
+		
+		
+		
 		// cargamos las plantillas
 		ClassLoader cLoader = this.getClass().getClassLoader();
 		InputStream input = cLoader.getResourceAsStream("conf/template.properties");
@@ -246,87 +340,6 @@ public class t3App {
 
 			logger.error(e1);
 		}
-		Label lblTabla = new Label(grpSeleccionaLaTabla, SWT.NONE);
-		lblTabla.setText("Tabla");
-
-		comboTablas = new Combo(grpSeleccionaLaTabla, SWT.NONE);
-		comboTablas.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-
-		Label lblclave = new Label(grpSeleccionaLaTabla, SWT.NONE);
-		lblclave.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-		lblclave.setText("clave Primaria");
-
-		tClave = new Text(grpSeleccionaLaTabla, SWT.BORDER);
-		tClave.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		new Label(grpSeleccionaLaTabla, SWT.NONE);
-		new Label(grpSeleccionaLaTabla, SWT.NONE);
-
-		Button btnNewButton = new Button(grpSeleccionaLaTabla, SWT.NONE);
-		btnNewButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		btnNewButton.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				if (conexionBean == null) {
-
-					muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error",
-							"Para realizar este paso hace falta conectarse previamente");
-					
-					logger.error("No hay conexión creada");
-					return;
-				}
-				LecturaPlantilla plantilla = new LecturaPlantilla();
-
-				DatosCrud crud = new DatosCrud();
-				crud.setTabla(comboTablas.getText());
-				crud.setConexionBd(conexionBean.getSufijo()+ conexionBean.getCadena());
-				crud.setUsuarioBd(conexionBean.getUsu());
-				crud.setClaveBd(conexionBean.getPass());
-				crud.setNombreClave(tClave.getText());
-				ResultSet rs = null;
-				Connection conn = dameConexion(conexionBean);
-				try {
-					
-					// Si no obtenemos conexión salimos del método
-					if (conn == null) {
-						return;
-					}
-					
-					try {
-						DatabaseMetaData metaDatos = conn.getMetaData();
-						rs = metaDatos.getColumns(null, null, comboTablas.getText(), null);
-						Map<String, String> map = new HashMap<String, String>();
-						while (rs.next()) {
-						  map.putIfAbsent(rs.getString("COLUMN_NAME"),TRANSLADAS_TIPOS.get(rs.getInt("DATA_TYPE")));
-						} 
-						crud.setCampos(map);
-
-						plantilla.cargaPlatilla(comboLenguaje.getText(), crud);
-						muestraDialogoModal(SWT.ICON_INFORMATION | SWT.OK, "Información", "Creada la plantilla");
-					} catch (SQLException e1) {
-						logger.error(e1);
-						muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error", "No se ha podido crear la conexión");
-						return;
-					}
-					
-					
-				} finally {
-					try {
-						if (rs != null)
-							rs.close();
-						if (conn != null)
-							conn.close();
-					} catch (SQLException e1) {
-						logger.error(e1);
-						muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error", "No se ha podido crear la conexión");
-						return;
-					}
-				}
-				
-
-			}
-		});
-		btnNewButton.setText("Generar");
-		new Label(grpSeleccionaLaTabla, SWT.NONE);
 
 	}
 
@@ -441,5 +454,81 @@ public class t3App {
 		messageBox.open();
 	}
 	
-	
+	 /**
+		 * Abre un dialogo de selección de fichero y guarda el path seleccionado en
+		 * la caja de texto de origen
+		 */
+		private String abreDialogoSalida(int estilo) {
+			
+			 DirectoryDialog dialog = new DirectoryDialog(shlGacPrctica, estilo);
+			
+			
+			String fileName = dialog.open();
+			if (fileName != null && !fileName.equals("")) {
+			
+				return fileName;
+			}
+			else return "";
+		}
+
+	/**
+	 * 
+	 */
+	private void trataPlantilla() {
+		if (conexionBean == null) {
+
+			muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error",
+					"Para realizar este paso hace falta conectarse previamente");
+			
+			logger.error("No hay conexión creada");
+			return;
+		}
+		LecturaPlantilla plantilla = new LecturaPlantilla();
+
+		DatosCrud crud = new DatosCrud();
+		crud.setTabla(comboTablas.getText());
+		crud.setConexionBd(conexionBean.getSufijo()+ conexionBean.getCadena());
+		crud.setUsuarioBd(conexionBean.getUsu());
+		crud.setClaveBd(conexionBean.getPass());
+		crud.setNombreClave(tClave.getText());
+		crud.setPathSalida(tSalida.getText());
+		ResultSet rs = null;
+		Connection conn = dameConexion(conexionBean);
+		try {
+			
+			// Si no obtenemos conexión salimos del método
+			if (conn == null) {
+				return;
+			}
+			
+			try {
+				DatabaseMetaData metaDatos = conn.getMetaData();
+				rs = metaDatos.getColumns(null, null, comboTablas.getText(), null);
+				Map<String, String> map = new HashMap<String, String>();
+				while (rs.next()) {
+				  map.putIfAbsent(rs.getString("COLUMN_NAME"),TRANSLADAS_TIPOS.get(rs.getInt("DATA_TYPE")));
+				} 
+				crud.setCampos(map);
+
+				plantilla.cargaPlatilla(comboLenguaje.getText(), crud);
+			} catch (SQLException e1) {
+				logger.error(e1);
+				muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error", "No se ha podido crear la conexión");
+				return;
+			}
+			
+			
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e1) {
+				logger.error(e1);
+				muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error", "No se ha podido crear la conexión");
+				return;
+			}
+		}
+	}	
 }

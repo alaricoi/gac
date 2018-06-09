@@ -43,6 +43,7 @@ public class DatosCrud implements Serializable{
     private String claveBd;
 
 
+    private String pathSalida;
 
     public String getTabla() {
         return tabla;
@@ -100,6 +101,16 @@ public class DatosCrud implements Serializable{
     public void setNombreClave(String nombreClave) {
         this.nombreClave = nombreClave;
     }
+
+
+	public String getPathSalida() {
+		return pathSalida;
+	}
+
+
+	public void setPathSalida(String pathSalida) {
+		this.pathSalida = pathSalida;
+	}
 
 
 }
