@@ -1,6 +1,13 @@
 package t1;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -47,13 +54,53 @@ public class t1App {
 	 */
 	public static void main(String[] args) {
 		try {
+			loadSwtJar();
 			t1App window = new t1App();
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	private static  void loadSwtJar() {
+	    String osName = System.getProperty("os.name").toLowerCase();
+	    String osArch = System.getProperty("os.arch").toLowerCase();
+	    String swtFileNameOsPart = 
+	        osName.contains("win") ? "win32" :
+	        osName.contains("mac") ? "macosx" :
+	        osName.contains("linux") || osName.contains("nix") ? "linux_gtk" :
+	        ""; // throw new RuntimeException("Unknown OS name: "+osName)
 
+	    String swtFileNameArchPart = osArch.contains("64") ? "x64" : "x86";
+	    String swtFileName = "swt_"+swtFileNameOsPart+"_"+swtFileNameArchPart+".jar";
+	    File f = new File("./lib/" + swtFileName);
+	    try {
+			URL myJarFile = new URL("jar","","file:"+f.getAbsolutePath()+"!/");
+			URLClassLoader sysLoader = (URLClassLoader)ClassLoader.getSystemClassLoader();
+			Class<URLClassLoader> sysClass = URLClassLoader.class;
+			Method sysMethod = sysClass.getDeclaredMethod("addURL",new Class[] {URL.class});
+			sysMethod.setAccessible(true);
+			sysMethod.invoke(sysLoader, new Object[]{myJarFile});
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+	    
+	}
 	/**
 	 * Open the window.
 	 */
@@ -256,4 +303,5 @@ public class t1App {
 		messageBox.setMessage(texto);
 		messageBox.open();
 	}
+	
 }
