@@ -36,14 +36,36 @@ import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.SWTResourceManager;
-
+/**
+ * Clase que utilizamos para la mantener los datos de conexión 
+ * capturados del interfaz de usuarios
+ * @author Isma
+ *
+ */
 class ConexionBean {
+	/**
+	 * la clase del driver o connector que podemos emplear
+	 */
 	private String driver;
+	/**
+	 * cadena de conexión al SGDB
+	 */
 	private String cadena;
+	/**
+	 * usurio de conexion
+	 */
 	private String usu;
+	/**
+	 * contraseña de conexión
+	 */
 	private String pass;
+	/**
+	 * dependiendo del SGDB se debe componer la cadena de conexion
+	 * con este valo abstraemos al usuario de saber que poner
+	 */
 	private String sufijo;
 
+	// Metodos getter y setter de la clase
 	public String getDriver() {
 		return driver;
 	}
@@ -84,6 +106,14 @@ class ConexionBean {
 		this.sufijo = sufijo;
 	}
 
+	/**
+	 * constructor con todos los atributos del objeto
+	 * @param driver
+	 * @param cadena
+	 * @param usu
+	 * @param pass
+	 * @param sufijo
+	 */
 	public ConexionBean(String driver, String cadena, String usu, String pass, String sufijo) {
 		super();
 		this.driver = driver;
@@ -93,7 +123,12 @@ class ConexionBean {
 		this.sufijo = sufijo;
 	}
 }
-
+/**
+ * Clase principal que carga la pantalla y tiene los métodos y acciones
+ * necesarias del trabajo
+ * @author Isma
+ *
+ */
 public class t2App {
 
 	protected Shell shlGacPrctica;
@@ -111,7 +146,7 @@ public class t2App {
 	private Label lblSalida;
 
 	/**
-	 * Launch the application.
+	 * Arranque de la aplicación
 	 * 
 	 * @param args
 	 */
@@ -196,14 +231,21 @@ public class t2App {
 
 		Button btnConectar = new Button(composite, SWT.NONE);
 		btnConectar.addSelectionListener(new SelectionAdapter() {
+			/**
+			 * Boton de conexxión de datos.
+			 * Se llama al metodo rellenaComboTablas que crea la conexion
+			 * carga el combo con las tablas 
+			 */
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				lblSalida.setText("");
+				//cambiamos el cursor de pantalla al de espera
 				Cursor waitCursor = new Cursor(shlGacPrctica.getDisplay(), SWT.CURSOR_WAIT);
 				try {
 					shlGacPrctica.setCursor(waitCursor);
 					rellenaComboTablas();
 				} finally {
+					// volvemos a poner el cursor por defecto
 					shlGacPrctica.setCursor(null);
 					waitCursor.dispose();
 				}
@@ -247,6 +289,11 @@ public class t2App {
 		Button btnGenerarSalida = new Button(grpSeleccionaLaTabla, SWT.NONE);
 		btnGenerarSalida.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		btnGenerarSalida.addSelectionListener(new SelectionAdapter() {
+			/**
+			 * evento del boton de generar la salida
+			 * llama a ejecutarConsulta con los datos de la tabla y el
+			 * texto del where
+			 */
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				Cursor waitCursor = new Cursor(shlGacPrctica.getDisplay(), SWT.CURSOR_WAIT);
@@ -276,19 +323,25 @@ public class t2App {
 
 		Button btnGuardar = new Button(grpSalida, SWT.NONE);
 		btnGuardar.addSelectionListener(new SelectionAdapter() {
+			/**
+			 * Guarda la salida en un fichero
+			 */
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				String tabla = lblSalida.getText().trim();
+				// control de que haya generado la salida
 				if (tabla == null || tabla.equals("")) {
 					muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error",
 					"No se ha creado todavia la salida");
 					
 					return;
 				}
+				// dialogo para seleccionar la salida de fichero
 				FileDialog dlg = new FileDialog(shlGacPrctica, SWT.SAVE);
 				dlg.setFileName(lblSalida.getText());
 				dlg.setOverwrite(true);
 				String fileName = dlg.open();
+				// guardamos el fichero si se selecciono el destino
 				if (fileName != null && !fileName.equals("")) {
 					try {
 						Files.write(Paths.get(fileName), tSalida.getText().getBytes());
@@ -346,7 +399,7 @@ public class t2App {
 	private Connection dameConexion(ConexionBean con) {
 
 		try {
-
+            // carga del driver o conector
 			Class.forName(con.getDriver());
 
 		} catch (ClassNotFoundException e1) {
@@ -358,6 +411,7 @@ public class t2App {
 		Connection conexion = null;
 
 		try {
+			// creamos la conexion a base de datos
 			conexion = DriverManager.getConnection(con.getSufijo() + con.getCadena(), con.getUsu(), con.getPass());
 		} catch (SQLException e1) {
 			muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error",
@@ -384,9 +438,11 @@ public class t2App {
 			driver = "org.sqlite.JDBC";
 			sufijo = "jdbc:sqlite:";
 		}
-
+        
+		// creamos el objeto conexión con los datos seleccionados
 		conexionBean = new ConexionBean(driver, tCadenaConex.getText(), tUsu.getText(), tPass.getText(), sufijo);
 
+		// conexion a bese de datos
 		Connection conn = dameConexion(conexionBean);
 		// Si no obtenemos conexión salimos del método
 		if (conn == null) {
@@ -395,10 +451,11 @@ public class t2App {
 		ResultSet rs = null;
 
 		try {
-
+            // extraccion del catalogo de datos del SGDB
 			DatabaseMetaData metaDatos = conn.getMetaData();
 			rs = metaDatos.getTables(null, null, "%", null);
 			comboTablas.removeAll();
+			
 			while (rs.next()) {
 				// El contenido de cada columna del ResultSet se puede ver
 				// en la API, en el metodo getTables() de DataBaseMetaData.
@@ -416,6 +473,7 @@ public class t2App {
 		} catch (SQLException e1) {
 			muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error", "No se ha podido crear la conexión");
 			logger.error(e1);
+			// liberamos los objetos de de conexion
 		} finally {
 			try {
 				if (rs != null)
@@ -431,7 +489,6 @@ public class t2App {
 	/**
 	 * A partir de la tabla seleccionada y la base de datos conectada se ejecuta
 	 */
-
 	private boolean ejecutaConsulta(String tabla, String where) {
 		
 		if (conexionBean == null) {
@@ -442,7 +499,7 @@ public class t2App {
 			logger.error("No hay conexión creada");
 			return false;
 		}
-		// Optenemos la conexion
+		// Obtenemos la conexion
 		Connection conn = dameConexion(conexionBean);
 		ResultSet rs = null;
 		Statement st = null;
@@ -456,7 +513,7 @@ public class t2App {
 			rs = st.executeQuery(sql);
 
 			switch (comboFormatSalida.getSelectionIndex()) {
-
+            // segun el combo de salida se genera el parseado
 			case 0:
 				// CSV;
 				tSalida.setText(rellenaCSV(rs));
@@ -489,7 +546,9 @@ public class t2App {
 			
 			logger.error(e);
 			return false;
+			
 		} finally {
+			//se liberan los objetos de conexión
 			try {
 				if (rs != null)
 					rs.close();
@@ -507,7 +566,7 @@ public class t2App {
 
 	/**
 	 * Recorre el resultset pasado como parametro y rellena un string con formato
-	 * JSON
+	 * JSON, ponemos una clave raiz con valos la lista de resultados
 	 * 
 	 * @param rs
 	 * @return
@@ -540,7 +599,14 @@ public class t2App {
 		resultado += "\n]}";
 		return resultado;
 	}
-
+/**
+ * Crea la salida en xml, anidamos la marca principal con el nombre de 
+ * la tabla. Cada registro ira entre la marca <fila>..</fila>
+ * @param tabla
+ * @param rs
+ * @return
+ * @throws SQLException
+ */
 	private String rellenaXML(String tabla, ResultSet rs) throws SQLException {
 
 		ResultSetMetaData metadata = rs.getMetaData();
@@ -561,19 +627,27 @@ public class t2App {
 
 		return resultado;
 	}
-
+/**
+ * Genera el html a partir del resultset de la consulta realizada
+ * @param tabla
+ * @param rs
+ * @return
+ * @throws SQLException
+ */
 	private String rellenaHTML(String tabla, ResultSet rs) throws SQLException {
 		ResultSetMetaData metadata = rs.getMetaData();
+		//caberera del fichero
 		String resultado ="<html><body>";
 		resultado += "<h1>" + tabla + "</h1>\n";
+		//creación del objeto table
 		resultado += "<table>\n";
 		resultado += "<tr>\n";
-
+       // ponemos una celda de cabecera por cada campo
 		for (int i = 1; i <= metadata.getColumnCount(); i++) {
 			resultado += "<th>" + metadata.getColumnName(i) + "</th>\n";
 		}
 		resultado += "</tr>\n";
-
+        // por cada registro ponemos un tr y cada campo va enmarcado en celda (td)
 		while (rs.next()) {
 			resultado += "<tr>\n";
 			for (int i = 1; i <= metadata.getColumnCount(); i++) {
@@ -585,12 +659,17 @@ public class t2App {
 			resultado += "</tr>\n";
 
 		}
-
+        // cerramos la tabla y el tag de fichero
 		resultado += "</table>\n";
 		 resultado +="</body></html>";
 		return resultado;
 	}
-
+/**
+ * Metodo que genera la salida csv, el separador de campo es el ;
+ * @param rs
+ * @return
+ * @throws SQLException
+ */
 	private String rellenaCSV(ResultSet rs) throws SQLException {
 		ResultSetMetaData metadata = rs.getMetaData();
 		String resultado = "";
@@ -614,7 +693,12 @@ public class t2App {
 
 		return resultado;
 	}
-	
+	/**
+	 * metodo generico de crear un mesaje de pantalla.
+	 * @param estilo
+	 * @param titulo
+	 * @param texto
+	 */
 	private void muestraDialogoModal(int estilo, String titulo, String texto) {
 		MessageBox messageBox = new MessageBox(shlGacPrctica, estilo);
 		messageBox.setText(titulo);
