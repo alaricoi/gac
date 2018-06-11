@@ -298,7 +298,10 @@ public class t2App {
 			public void widgetSelected(SelectionEvent e) {
 				Cursor waitCursor = new Cursor(shlGacPrctica.getDisplay(), SWT.CURSOR_WAIT);
 				try {
+					// ponemos el cursor de espera mientrar se ejecuta la consulta
 					shlGacPrctica.setCursor(waitCursor);
+					//llamamos a ejecutar la consulta con los datos de la tabla selccionada
+					//y el valor del where
 					if (ejecutaConsulta(comboTablas.getText(), tWhere.getText())){
 						muestraDialogoModal(SWT.ICON_INFORMATION | SWT.OK,
 								"Información",
@@ -306,6 +309,7 @@ public class t2App {
 					
 				}
 				} finally {
+					// volvemos a poner el cursor de pantalla por defecto
 					shlGacPrctica.setCursor(null);
 					waitCursor.dispose();
 				}
@@ -347,7 +351,7 @@ public class t2App {
 						Files.write(Paths.get(fileName), tSalida.getText().getBytes());
 					} catch (IOException e1) {
 						muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error",
-								"No se ha podido crearel fichero: " + e1.getMessage());
+								"No se ha podido crear el fichero: " + e1.getMessage());
 						
 						logger.error(e1);
 					}
@@ -412,7 +416,8 @@ public class t2App {
 
 		try {
 			// creamos la conexion a base de datos
-			conexion = DriverManager.getConnection(con.getSufijo() + con.getCadena(), con.getUsu(), con.getPass());
+			conexion = DriverManager.getConnection(con.getSufijo() + con.getCadena(), 
+					                               con.getUsu(), con.getPass());
 		} catch (SQLException e1) {
 			muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error",
 					"No se ha podido crear la conexión: " + e1.getMessage());
