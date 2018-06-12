@@ -1280,3 +1280,25 @@ public class Albums
 2018-06-12 10:34:33,949 [main] INFO t3.t3App - File Found : true
 2018-06-12 10:34:33,950 [main] INFO t3.t3App - buscando ./templates/php/vista.tpl
 2018-06-12 10:34:33,951 [main] INFO t3.t3App - File Found : true
+2018-06-12 13:42:26,044 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-12 13:43:25,176 [main] INFO t3.t3App - buscando ./templates/php/dao.tpl
+2018-06-12 13:43:25,177 [main] INFO t3.t3App - File Found : true
+2018-06-12 13:43:25,189 [main] INFO t3.t3App - buscando ./templates/php/persistencia.tpl
+2018-06-12 13:43:25,189 [main] INFO t3.t3App - File Found : true
+2018-06-12 13:43:25,190 [main] INFO t3.t3App - buscando ./templates/php/vista.tpl
+2018-06-12 13:43:25,190 [main] INFO t3.t3App - File Found : true
+2018-06-12 13:43:58,196 [main] INFO t3.t3App - buscando ./templates/php/dao.tpl
+2018-06-12 13:43:58,196 [main] INFO t3.t3App - File Found : true
+2018-06-12 13:43:58,199 [main] INFO t3.t3App - buscando ./templates/php/persistencia.tpl
+2018-06-12 13:43:58,199 [main] INFO t3.t3App - File Found : true
+2018-06-12 13:43:58,200 [main] INFO t3.t3App - buscando ./templates/php/vista.tpl
+2018-06-12 13:43:58,200 [main] INFO t3.t3App - File Found : true
+2018-06-12 13:49:21,975 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-12 13:50:05,067 [main] INFO t3.t3App - sqlite:D:\workspaceMio\gac\t3\data\test.db
+2018-06-12 13:50:05,069 [main] INFO t3.t3App - buscando ./templates/php/dao.tpl
+2018-06-12 13:50:05,069 [main] INFO t3.t3App - File Found : true
+2018-06-12 13:50:05,080 [main] INFO t3.t3App - buscando ./templates/php/persistencia.tpl
+2018-06-12 13:50:05,081 [main] INFO t3.t3App - File Found : true
+2018-06-12 13:50:05,082 [main] INFO t3.t3App - buscando ./templates/php/vista.tpl
+2018-06-12 13:50:05,082 [main] INFO t3.t3App - File Found : true
+2018-06-12 13:56:47,068 [main] INFO t3.t3App - D:\workspaceMio\gac\t3

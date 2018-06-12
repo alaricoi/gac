@@ -492,7 +492,22 @@ public class t3App {
 
 		DatosCrud crud = new DatosCrud();
 		crud.setTabla(comboTablas.getText());
-		crud.setConexionBd(conexionBean.getSufijo() + conexionBean.getCadena());
+		
+		//quitamos la llamada a jdbc si no es java
+		  String sufijo = conexionBean.getSufijo();
+          if (comboLenguaje.getText().equalsIgnoreCase("php")) { 				  
+			sufijo = sufijo.replace("jdbc:", "");
+          }		
+          
+          String conexion = conexionBean.getCadena();
+          //si es sqlite, como estamos en windows hat que escapar el carecter \
+          if (conexionBean.getDriver().equalsIgnoreCase("org.sqlite.JDBC")) {
+        	conexion =   conexion.replaceAll("\\", "/");
+          }
+           
+          crud.setConexionBd(sufijo + conexion);
+
+		
 		crud.setUsuarioBd(conexionBean.getUsu());
 		crud.setClaveBd(conexionBean.getPass());
 		crud.setNombreClave(tClave.getText());

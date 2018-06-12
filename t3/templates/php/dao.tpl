@@ -82,17 +82,17 @@ class <<#nombreClase#>>Model
         }
     }
 
-    public function Actualizar(Alumno $data)
+    public function Actualizar(<<#nombreClase#>> $data)
     {
         try
         {
-            $sql = "UPDATE alumnos SET
+            $sql = "UPDATE <<#tablename#>> SET
                        <<#todos_campo_valor#>>
                     WHERE <<#nombre_clave_tabla#>> = ?";
 
             $array_param = [];
             <<#seccion_loop_campos#>>
-              array_push( $array_param,  $data->__GET('<<#nombre_campo#>>');
+              array_push( $array_param,  $data->__GET('<<#nombre_campo#>>'));
             <</#seccion_loop_campos#>>
              array_push( $array_param,  $data->__GET('<<#nombre_clave#>>'));
             $this->pdo->prepare($sql)->execute($array_param);
@@ -102,13 +102,13 @@ class <<#nombreClase#>>Model
         }
     }
 
-    public function Registrar(Alumno $data)
+    public function Registrar(<<#nombreClase#>> $data)
     {
         try
         {
         $sql = "INSERT INTO <<#tablename#>> "
-       + "(<<#todos_campos_tabla#>>)"
-        + "VALUES (<<#todos_campos_tabla_parametro#>>)";
+        . " (<<#todos_campos_tabla#>>) "
+        . " VALUES (<<#todos_campos_tabla_parametro#>>)";
 
             $array_param = [];
             <<#seccion_loop_campos#>>

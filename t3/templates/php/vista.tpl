@@ -12,29 +12,29 @@ if(isset($_REQUEST['action']))
         case 'actualizar':
 
                 <<#seccion_loop_campos#>>
-                   $<<#nombreObjeto#>>->__SET('<<#nombre_campo#>>', $r-><<#nombre_campo#>>);
+                   $<<#nombreObjeto#>>->__SET('<<#nombre_campo#>>', $_REQUEST['<<#nombre_campo#>>']);
                <</#seccion_loop_campos#>>
 
             $model->Actualizar($<<#nombreObjeto#>>);
-            header('Location: index.php');
+            header('Location: <<#nombreClase#>>Vista.php');
             break;
 
         case 'registrar':
               <<#seccion_loop_campos#>>
-                   $<<#nombreObjeto#>>->__SET('<<#nombre_campo#>>', $r-><<#nombre_campo#>>);
+                   $<<#nombreObjeto#>>->__SET('<<#nombre_campo#>>', $_REQUEST['<<#nombre_campo#>>']);
                <</#seccion_loop_campos#>>
 
             $model->Registrar($<<#nombreObjeto#>>);
-            header('Location: index.php');
+            header('Location: <<#nombreClase#>>Vista.php');
             break;
 
         case 'eliminar':
-            $model->Eliminar($_REQUEST['id']);
-            header('Location: index.php');
+            $model->Eliminar($_REQUEST['<<#nombre_clave#>>']);
+            header('Location: <<#nombreClase#>>Vista.php');
             break;
 
         case 'editar':
-            $<<#nombreObjeto#>> = $model->Obtener($_REQUEST['id']);
+            $<<#nombreObjeto#>> = $model->Obtener($_REQUEST['<<#nombre_clave#>>']);
             break;
     }
 }
@@ -44,16 +44,16 @@ if(isset($_REQUEST['action']))
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Anexsoft</title>
-        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+        <title><<#nombreClase#>>.</title>
+       
     </head>
     <body style="padding:15px;">
 
-        <div class="pure-g">
-            <div class="pure-u-1-12">
+        <div >
+            <div ">
 
-                <form action="?action=<?php echo $<<#nombreObjeto#>>->id > 0 ? 'actualizar' : 'registrar'; ?>" method="post" class="pure-form pure-form-stacked" style="margin-bottom:30px;">
-                    <input type="hidden" name="id" value="<?php echo $<<#nombreObjeto#>>->__GET('id'); ?>" />
+                <form action="?action=<?php echo $<<#nombreObjeto#>>-><<#nombre_clave#>> > 0 ? 'actualizar' : 'registrar'; ?>" method="post" >
+                    <input type="hidden" name="<<#nombre_clave#>>" value="<?php echo $<<#nombreObjeto#>>->__GET('<<#nombre_clave#>>'); ?>" />
 
                     <table style="width:500px;">
                       <<#seccion_loop_campos#>>
@@ -64,9 +64,11 @@ if(isset($_REQUEST['action']))
                        <</#seccion_loop_campos#>>
 
                     </table>
+                    	
+					 <input type="submit" value="aceptar">
                 </form>
 
-                <table class="pure-table pure-table-horizontal">
+                <table >
                     <thead>
                         <tr>
                          <<#seccion_loop_campos#>>
@@ -85,10 +87,10 @@ if(isset($_REQUEST['action']))
                              <</#seccion_loop_campos#>>
                             <td>
 
-                                <a href="?action=editar&id=<?php echo $r-><<#nombre_clave#>>; ?>">Editar</a>
+                                <a href="?action=editar&<<#nombre_clave#>>=<?php echo $r-><<#nombre_clave#>>; ?>">Editar</a>
                             </td>
                             <td>
-                                <a href="?action=eliminar&id=<?php echo $r-><<#nombre_clave#>>; ?>">Eliminar</a>
+                                <a href="?action=eliminar&<<#nombre_clave#>>=<?php echo $r-><<#nombre_clave#>>; ?>">Eliminar</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
