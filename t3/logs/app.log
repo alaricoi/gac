@@ -1302,3 +1302,49 @@ public class Albums
 2018-06-12 13:50:05,082 [main] INFO t3.t3App - buscando ./templates/php/vista.tpl
 2018-06-12 13:50:05,082 [main] INFO t3.t3App - File Found : true
 2018-06-12 13:56:47,068 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-12 14:52:26,335 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-12 14:54:30,850 [main] ERROR t3.t3App - java.sql.SQLException: path to 'localhost:3306/sys': 'D:\workspaceMio\gac\t3\localhost:3306' does not exist
+2018-06-12 14:54:42,053 [main] ERROR t3.t3App - java.sql.SQLException: path to 'http://localhost:3306/sys': 'D:\workspaceMio\gac\t3\http:' does not exist
+2018-06-12 14:54:48,177 [main] ERROR t3.t3App - java.sql.SQLException: Must specify port after ':' in connection string
+2018-06-12 14:57:36,665 [main] INFO t3.t3App - buscando ./templates/php/dao.tpl
+2018-06-12 14:57:36,665 [main] INFO t3.t3App - File Found : true
+2018-06-12 14:57:44,415 [main] INFO t3.t3App - buscando ./templates/php/dao.tpl
+2018-06-12 14:57:44,415 [main] INFO t3.t3App - File Found : true
+2018-06-12 14:57:44,421 [main] INFO t3.t3App - buscando ./templates/php/persistencia.tpl
+2018-06-12 14:57:44,421 [main] INFO t3.t3App - File Found : true
+2018-06-12 14:57:44,423 [main] INFO t3.t3App - buscando ./templates/php/vista.tpl
+2018-06-12 14:57:44,424 [main] INFO t3.t3App - File Found : true
+2018-06-12 14:59:00,060 [main] INFO t3.t3App - buscando ./templates/php/dao.tpl
+2018-06-12 14:59:00,060 [main] INFO t3.t3App - File Found : true
+2018-06-12 14:59:00,060 [main] INFO t3.t3App - buscando ./templates/php/persistencia.tpl
+2018-06-12 14:59:00,060 [main] INFO t3.t3App - File Found : true
+2018-06-12 14:59:00,060 [main] INFO t3.t3App - buscando ./templates/php/vista.tpl
+2018-06-12 14:59:00,060 [main] INFO t3.t3App - File Found : true
+2018-06-12 15:14:19,736 [main] ERROR t3.t3App - com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown database 'employess'
+2018-06-12 15:14:49,787 [main] INFO t3.t3App - buscando ./templates/php/dao.tpl
+2018-06-12 15:14:49,787 [main] INFO t3.t3App - File Found : true
+2018-06-12 15:14:49,789 [main] INFO t3.t3App - buscando ./templates/php/persistencia.tpl
+2018-06-12 15:14:49,789 [main] INFO t3.t3App - File Found : true
+2018-06-12 15:14:49,790 [main] INFO t3.t3App - buscando ./templates/php/vista.tpl
+2018-06-12 15:14:49,790 [main] INFO t3.t3App - File Found : true
+2018-06-12 15:25:00,585 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-12 15:25:44,396 [main] INFO t3.t3App - buscando ./templates/php/dao.tpl
+2018-06-12 15:25:44,396 [main] INFO t3.t3App - File Found : true
+2018-06-12 15:25:44,398 [main] INFO t3.t3App - buscando ./templates/php/persistencia.tpl
+2018-06-12 15:25:44,398 [main] INFO t3.t3App - File Found : true
+2018-06-12 15:25:44,398 [main] INFO t3.t3App - buscando ./templates/php/vista.tpl
+2018-06-12 15:25:44,398 [main] INFO t3.t3App - File Found : true
+2018-06-12 15:26:48,711 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-12 15:27:08,089 [main] ERROR t3.t3App - java.sql.SQLException: Access denied for user ''@'localhost' (using password: NO)
+2018-06-12 15:27:32,284 [main] INFO t3.t3App - buscando ./templates/php/dao.tpl
+2018-06-12 15:27:32,284 [main] INFO t3.t3App - File Found : true
+2018-06-12 15:27:32,306 [main] INFO t3.t3App - buscando ./templates/php/persistencia.tpl
+2018-06-12 15:27:32,306 [main] INFO t3.t3App - File Found : true
+2018-06-12 15:27:32,307 [main] INFO t3.t3App - buscando ./templates/php/vista.tpl
+2018-06-12 15:27:32,307 [main] INFO t3.t3App - File Found : true
+2018-06-12 15:29:48,340 [main] INFO t3.t3App - buscando ./templates/php/dao.tpl
+2018-06-12 15:29:48,340 [main] INFO t3.t3App - File Found : true
+2018-06-12 15:29:48,340 [main] INFO t3.t3App - buscando ./templates/php/persistencia.tpl
+2018-06-12 15:29:48,340 [main] INFO t3.t3App - File Found : true
+2018-06-12 15:29:48,340 [main] INFO t3.t3App - buscando ./templates/php/vista.tpl
+2018-06-12 15:29:48,340 [main] INFO t3.t3App - File Found : true

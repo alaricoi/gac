@@ -495,15 +495,31 @@ public class t3App {
 		
 		//quitamos la llamada a jdbc si no es java
 		  String sufijo = conexionBean.getSufijo();
+		 
+	     String conexion = conexionBean.getCadena();
           if (comboLenguaje.getText().equalsIgnoreCase("php")) { 				  
 			sufijo = sufijo.replace("jdbc:", "");
+			//si es sqlite, como estamos en windows hat que escapar el carecter \
+	        if (conexionBean.getDriver().equalsIgnoreCase("org.sqlite.JDBC")) {
+	        	conexion =   conexion.replaceAll("\\", "/");
+	          }
+	        //es mysql y la conexón se realida de forma:
+	        //mysql:dbname=employees;host=localhost;port=3306
+	        else {
+	        	sufijo = "mysql:";
+	        	//host
+	        	String host =  conexionBean.getCadena().substring(0, conexionBean.getCadena().indexOf(":"));
+	        	//
+	        	String port = conexionBean.getCadena().substring(conexionBean.getCadena().indexOf(":") +1,
+	        			                                  conexionBean.getCadena().indexOf("/"));
+	        	String dbname = conexionBean.getCadena().substring(conexionBean.getCadena().indexOf("/")+1); 		
+	        	conexion = "dbname=" +dbname + ";host=" + host + ";port=" + port;
+	        }	
           }		
           
-          String conexion = conexionBean.getCadena();
-          //si es sqlite, como estamos en windows hat que escapar el carecter \
-          if (conexionBean.getDriver().equalsIgnoreCase("org.sqlite.JDBC")) {
-        	conexion =   conexion.replaceAll("\\", "/");
-          }
+          
+          
+          
            
           crud.setConexionBd(sufijo + conexion);
 
