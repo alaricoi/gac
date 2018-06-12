@@ -1251,3 +1251,32 @@ public class Albums
 
 }
 2018-06-12 10:07:53,558 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-12 10:21:26,769 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-12 10:21:30,716 [main] ERROR t3.t3App - java.sql.SQLException: path to 'D:\workspace\t3\data\test.db': 'D:\workspace' does not exist
+2018-06-12 10:26:37,383 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-12 10:28:37,172 [main] INFO t3.t3App - buscando ./templates/java/dao.tpl
+2018-06-12 10:28:37,172 [main] INFO t3.t3App - File Found : true
+2018-06-12 10:28:37,184 [main] INFO t3.t3App - buscando ./templates/java/persistencia.tpl
+2018-06-12 10:28:37,185 [main] INFO t3.t3App - File Found : true
+2018-06-12 10:30:00,060 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-12 10:30:36,443 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-12 10:31:03,305 [main] INFO t3.t3App - buscando ./templates/php/dao.tpl
+2018-06-12 10:31:03,305 [main] INFO t3.t3App - File Found : true
+2018-06-12 10:31:03,316 [main] INFO t3.t3App - buscando ./templates/php/persistencia.tpl
+2018-06-12 10:31:03,317 [main] INFO t3.t3App - File Found : true
+2018-06-12 10:31:03,318 [main] INFO t3.t3App - buscando ./templates/php/vista.tpl
+2018-06-12 10:31:03,318 [main] INFO t3.t3App - File Found : true
+2018-06-12 10:32:34,024 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-12 10:33:06,551 [main] INFO t3.t3App - buscando ./templates/php/dao.tpl
+2018-06-12 10:33:06,551 [main] INFO t3.t3App - File Found : true
+2018-06-12 10:33:26,485 [main] INFO t3.t3App - buscando ./templates/php/persistencia.tpl
+2018-06-12 10:33:26,486 [main] INFO t3.t3App - File Found : true
+2018-06-12 10:33:37,565 [main] INFO t3.t3App - buscando ./templates/php/vista.tpl
+2018-06-12 10:33:37,565 [main] INFO t3.t3App - File Found : true
+2018-06-12 10:33:55,331 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-12 10:34:33,938 [main] INFO t3.t3App - buscando ./templates/php/dao.tpl
+2018-06-12 10:34:33,938 [main] INFO t3.t3App - File Found : true
+2018-06-12 10:34:33,949 [main] INFO t3.t3App - buscando ./templates/php/persistencia.tpl
+2018-06-12 10:34:33,949 [main] INFO t3.t3App - File Found : true
+2018-06-12 10:34:33,950 [main] INFO t3.t3App - buscando ./templates/php/vista.tpl
+2018-06-12 10:34:33,951 [main] INFO t3.t3App - File Found : true

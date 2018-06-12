@@ -1,6 +1,6 @@
 <?php
-require_once '<<#nombreClase#>>.entidad.php';
-require_once '<<#nombreClase#>>.model.php';
+require_once '<<#nombreClase#>>.php';
+require_once '<<#nombreClase#>>Dao.php';
 
 $<<#nombreObjeto#>> = new <<#nombreClase#>>();
 $model = new <<#nombreClase#>>Model();

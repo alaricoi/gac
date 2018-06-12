@@ -1,3 +1,4 @@
+<?php
 class <<#nombreClase#>>Model
 {
     private $pdo;
@@ -30,7 +31,7 @@ class <<#nombreClase#>>Model
                 $<<#nombreObjeto#>> = new <<#nombreClase#>>();
 
                 <<#seccion_loop_campos#>>
-                   $<<#nombreObjeto#>>->__SET('<<#nombre_campo#>>', $r-><<#nombre_campo#>>);
+                   $<<#nombreObjeto#>>->__SET('<<#nombre_campo#>>', $r-><<#nombre_campo_tabla#>>);
                <</#seccion_loop_campos#>>
                 $result[] = $<<#nombreObjeto#>>;
             }
@@ -57,7 +58,7 @@ class <<#nombreClase#>>Model
            $<<#nombreObjeto#>> = new <<#nombreClase#>>();
 
               <<#seccion_loop_campos#>>
-                   $<<#nombreObjeto#>>->__SET('<<#nombre_campo#>>', $r-><<#nombre_campo#>>);
+                   $<<#nombreObjeto#>>->__SET('<<#nombre_campo#>>', $r-><<#nombre_campo_tabla#>>);
                <</#seccion_loop_campos#>>
 
             return $<<#nombreObjeto#>>;
@@ -93,7 +94,7 @@ class <<#nombreClase#>>Model
             <<#seccion_loop_campos#>>
               array_push( $array_param,  $data->__GET('<<#nombre_campo#>>');
             <</#seccion_loop_campos#>>
-             array_push( $array_param,  $data->__GET('<<#nombre_clave#>>');
+             array_push( $array_param,  $data->__GET('<<#nombre_clave#>>'));
             $this->pdo->prepare($sql)->execute($array_param);
         } catch (Exception $e)
         {
@@ -111,7 +112,7 @@ class <<#nombreClase#>>Model
 
             $array_param = [];
             <<#seccion_loop_campos#>>
-              array_push( $array_param,  $data->__GET('<<#nombre_campo#>>');
+              array_push( $array_param,  $data->__GET('<<#nombre_campo#>>'));
             <</#seccion_loop_campos#>>
              $this->pdo->prepare($sql)->execute($array_param);
         } catch (Exception $e)
@@ -120,3 +121,4 @@ class <<#nombreClase#>>Model
         }
     }
 }
+?>

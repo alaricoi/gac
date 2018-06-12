@@ -33,14 +33,14 @@ public class LecturaPlantilla {
 				String nombreFichero = crud.getPathSalida() + '/' +  camelCase(crud.getTabla(), true);
 		    
 				// 	en los casos de dao y vista se añade 
-				if (pl.equalsIgnoreCase("dao.pl")) {
+				if (pl.equalsIgnoreCase("dao.tpl")) {
 					nombreFichero += "Dao";
 				}
-				if (pl.equalsIgnoreCase("vista.pl")) {
-				nombreFichero += "Vista";
+				if (pl.equalsIgnoreCase("vista.tpl")) {
+				  nombreFichero += "Vista";
 				}
 				
-				File fichero = new File(nombreFichero);
+				File fichero = new File(nombreFichero + "." + plantilla);
 				FileOutputStream stream = new FileOutputStream(fichero, false); // true to append
 				                                                                 // false to overwrite.
 				byte[] myBytes = s.getBytes(); 

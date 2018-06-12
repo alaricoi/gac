@@ -516,6 +516,8 @@ public class t3App {
 				crud.setCampos(map);
 
 				plantilla.cargaPlatilla(comboLenguaje.getText(), crud);
+				muestraDialogoModal(SWT.ICON_INFORMATION | SWT.OK, "Correcto", "Se ha creado la salida de la platilla");
+
 			} catch (SQLException e1) {
 				logger.error(e1);
 				muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error", "No se ha podido crear la conexión");
