@@ -1,0 +1,618 @@
+<innodb_table_stats>
+<fila>
+<database_name>conectar_carroces</database_name>
+<table_name>clientes</table_name>
+<last_update>2017-12-12 00:28:43.0</last_update>
+<n_rows>8</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>conectar_carroces</database_name>
+<table_name>festivos_apertura</table_name>
+<last_update>2017-10-24 00:33:30.0</last_update>
+<n_rows>5</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>conectar_carroces</database_name>
+<table_name>festivos_cierre</table_name>
+<last_update>2017-10-26 00:27:16.0</last_update>
+<n_rows>3</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>conectar_carroces</database_name>
+<table_name>horarios</table_name>
+<last_update>2017-10-24 00:27:30.0</last_update>
+<n_rows>3</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>conectar_carroces</database_name>
+<table_name>lineas_pedidos</table_name>
+<last_update>2017-11-18 00:19:03.0</last_update>
+<n_rows>126</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>2</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>conectar_carroces</database_name>
+<table_name>operadores</table_name>
+<last_update>2017-10-13 09:14:14.0</last_update>
+<n_rows>0</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>conectar_carroces</database_name>
+<table_name>pedidos</table_name>
+<last_update>2017-11-17 23:39:32.0</last_update>
+<n_rows>132</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>2</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>conectar_carroces</database_name>
+<table_name>productos</table_name>
+<last_update>2017-10-15 17:41:20.0</last_update>
+<n_rows>8</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>conectar_carroces</database_name>
+<table_name>reset_pass</table_name>
+<last_update>2017-12-13 23:52:19.0</last_update>
+<n_rows>29</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>conectar_carroces</database_name>
+<table_name>roles</table_name>
+<last_update>2017-10-13 08:55:38.0</last_update>
+<n_rows>2</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>conectar_carroces</database_name>
+<table_name>tiendas</table_name>
+<last_update>2017-11-17 17:40:19.0</last_update>
+<n_rows>3</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>conectar_carroces</database_name>
+<table_name>tipos_operadores</table_name>
+<last_update>2017-10-13 08:55:40.0</last_update>
+<n_rows>3</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>conectar_carroces</database_name>
+<table_name>tipos_paellera</table_name>
+<last_update>2017-10-13 08:55:41.0</last_update>
+<n_rows>5</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>conectar_carroces</database_name>
+<table_name>tipos_productos</table_name>
+<last_update>2017-10-13 08:55:51.0</last_update>
+<n_rows>3</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>conectar_carroces</database_name>
+<table_name>usuario_tiendas</table_name>
+<last_update>2017-10-13 09:50:13.0</last_update>
+<n_rows>6</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>2</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>conectar_carroces</database_name>
+<table_name>usuarios</table_name>
+<last_update>2017-10-13 09:15:46.0</last_update>
+<n_rows>2</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>mysql</database_name>
+<table_name>gtid_executed</table_name>
+<last_update>2017-10-10 00:24:01.0</last_update>
+<n_rows>0</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>pelis</database_name>
+<table_name>app_user</table_name>
+<last_update>2018-04-16 21:47:34.0</last_update>
+<n_rows>6</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>pelis</database_name>
+<table_name>app_user_user_profile</table_name>
+<last_update>2018-04-29 23:15:06.0</last_update>
+<n_rows>8</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>pelis</database_name>
+<table_name>generos</table_name>
+<last_update>2018-05-09 01:19:36.0</last_update>
+<n_rows>8</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>pelis</database_name>
+<table_name>opiniones</table_name>
+<last_update>2018-05-07 20:51:56.0</last_update>
+<n_rows>3</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>2</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>pelis</database_name>
+<table_name>titulos</table_name>
+<last_update>2018-05-07 20:52:16.0</last_update>
+<n_rows>15</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>pelis</database_name>
+<table_name>user_profile</table_name>
+<last_update>2018-04-16 21:47:24.0</last_update>
+<n_rows>3</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>active_rule_parameters</table_name>
+<last_update>2018-04-30 00:02:10.0</last_update>
+<n_rows>173</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>active_rules</table_name>
+<last_update>2018-04-30 00:02:00.0</last_update>
+<n_rows>1581</n_rows>
+<clustered_index_size>7</clustered_index_size>
+<sum_of_other_index_sizes>4</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>analysis_properties</table_name>
+<last_update>2018-04-15 18:59:38.0</last_update>
+<n_rows>0</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>ce_activity</table_name>
+<last_update>2018-05-10 01:40:35.0</last_update>
+<n_rows>38</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>4</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>ce_queue</table_name>
+<last_update>2018-05-10 01:44:25.0</last_update>
+<n_rows>0</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>2</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>ce_scanner_context</table_name>
+<last_update>2018-05-10 01:30:07.0</last_update>
+<n_rows>98</n_rows>
+<clustered_index_size>161</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>ce_task_characteristics</table_name>
+<last_update>2018-04-15 18:59:29.0</last_update>
+<n_rows>0</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>ce_task_input</table_name>
+<last_update>2018-05-10 01:44:35.0</last_update>
+<n_rows>0</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>default_qprofiles</table_name>
+<last_update>2018-04-15 19:00:29.0</last_update>
+<n_rows>8</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>duplications_index</table_name>
+<last_update>2018-04-15 18:57:57.0</last_update>
+<n_rows>0</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>2</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>es_queue</table_name>
+<last_update>2018-05-10 00:18:09.0</last_update>
+<n_rows>0</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>events</table_name>
+<last_update>2018-05-10 01:37:59.0</last_update>
+<n_rows>35</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>3</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>file_sources</table_name>
+<last_update>2018-05-10 01:44:05.0</last_update>
+<n_rows>50</n_rows>
+<clustered_index_size>22</clustered_index_size>
+<sum_of_other_index_sizes>3</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>group_roles</table_name>
+<last_update>2018-04-30 07:43:18.0</last_update>
+<n_rows>8</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>2</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>groups</table_name>
+<last_update>2018-04-15 18:58:31.0</last_update>
+<n_rows>2</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>groups_users</table_name>
+<last_update>2018-04-15 18:57:26.0</last_update>
+<n_rows>2</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>3</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>internal_properties</table_name>
+<last_update>2018-05-20 09:32:12.0</last_update>
+<n_rows>3</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>issue_changes</table_name>
+<last_update>2018-05-09 23:50:14.0</last_update>
+<n_rows>810</n_rows>
+<clustered_index_size>8</clustered_index_size>
+<sum_of_other_index_sizes>5</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>issues</table_name>
+<last_update>2018-05-10 00:11:02.0</last_update>
+<n_rows>736</n_rows>
+<clustered_index_size>16</clustered_index_size>
+<sum_of_other_index_sizes>20</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>loaded_templates</table_name>
+<last_update>2018-04-15 19:01:39.0</last_update>
+<n_rows>2</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>manual_measures</table_name>
+<last_update>2018-04-15 18:59:15.0</last_update>
+<n_rows>0</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>metrics</table_name>
+<last_update>2018-04-15 23:01:53.0</last_update>
+<n_rows>253</n_rows>
+<clustered_index_size>5</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>notifications</table_name>
+<last_update>2018-04-19 23:14:20.0</last_update>
+<n_rows>0</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>org_qprofiles</table_name>
+<last_update>2018-04-15 19:00:39.0</last_update>
+<n_rows>12</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>2</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>organization_members</table_name>
+<last_update>2018-04-15 18:58:54.0</last_update>
+<n_rows>0</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>organizations</table_name>
+<last_update>2018-04-15 18:59:11.0</last_update>
+<n_rows>1</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>perm_templates_groups</table_name>
+<last_update>2018-04-15 19:01:29.0</last_update>
+<n_rows>4</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>perm_templates_users</table_name>
+<last_update>2018-04-15 18:57:04.0</last_update>
+<n_rows>0</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>perm_tpl_characteristics</table_name>
+<last_update>2018-04-15 18:57:28.0</last_update>
+<n_rows>0</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>permission_templates</table_name>
+<last_update>2018-04-15 18:58:34.0</last_update>
+<n_rows>0</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>plugins</table_name>
+<last_update>2018-04-15 23:01:17.0</last_update>
+<n_rows>13</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>project_branches</table_name>
+<last_update>2018-04-30 07:43:17.0</last_update>
+<n_rows>1</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>project_links</table_name>
+<last_update>2018-04-30 07:43:27.0</last_update>
+<n_rows>1</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>project_measures</table_name>
+<last_update>2018-05-10 01:44:15.0</last_update>
+<n_rows>4551</n_rows>
+<clustered_index_size>66</clustered_index_size>
+<sum_of_other_index_sizes>40</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>project_qprofiles</table_name>
+<last_update>2018-04-30 07:44:15.0</last_update>
+<n_rows>2</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>projects</table_name>
+<last_update>2018-05-10 00:04:29.0</last_update>
+<n_rows>73</n_rows>
+<clustered_index_size>4</clustered_index_size>
+<sum_of_other_index_sizes>7</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>properties</table_name>
+<last_update>2018-05-14 19:02:29.0</last_update>
+<n_rows>5</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>qprofile_changes</table_name>
+<last_update>2018-04-30 00:02:00.0</last_update>
+<n_rows>1536</n_rows>
+<clustered_index_size>19</clustered_index_size>
+<sum_of_other_index_sizes>8</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>qprofile_edit_groups</table_name>
+<last_update>2018-04-15 18:59:36.0</last_update>
+<n_rows>0</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>qprofile_edit_users</table_name>
+<last_update>2018-04-15 18:59:35.0</last_update>
+<n_rows>0</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>quality_gate_conditions</table_name>
+<last_update>2018-04-15 19:00:04.0</last_update>
+<n_rows>5</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>quality_gates</table_name>
+<last_update>2018-04-15 18:57:09.0</last_update>
+<n_rows>0</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>rule_repositories</table_name>
+<last_update>2018-05-14 19:02:58.0</last_update>
+<n_rows>24</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>rules</table_name>
+<last_update>2018-05-01 23:44:23.0</last_update>
+<n_rows>1836</n_rows>
+<clustered_index_size>161</clustered_index_size>
+<sum_of_other_index_sizes>6</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>rules_metadata</table_name>
+<last_update>2018-04-15 18:58:57.0</last_update>
+<n_rows>0</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>rules_parameters</table_name>
+<last_update>2018-05-01 23:44:34.0</last_update>
+<n_rows>718</n_rows>
+<clustered_index_size>8</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>rules_profiles</table_name>
+<last_update>2018-04-15 19:00:29.0</last_update>
+<n_rows>12</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>1</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>schema_migrations</table_name>
+<last_update>2018-04-15 18:59:38.0</last_update>
+<n_rows>231</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>snapshots</table_name>
+<last_update>2018-05-10 01:30:07.0</last_update>
+<n_rows>27</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>2</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>user_roles</table_name>
+<last_update>2018-04-15 18:58:33.0</last_update>
+<n_rows>0</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>2</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>user_tokens</table_name>
+<last_update>2018-04-15 18:57:21.0</last_update>
+<n_rows>0</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>users</table_name>
+<last_update>2018-04-15 18:59:28.0</last_update>
+<n_rows>1</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>2</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sonar</database_name>
+<table_name>webhook_deliveries</table_name>
+<last_update>2018-04-15 18:59:40.0</last_update>
+<n_rows>0</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>2</sum_of_other_index_sizes>
+</fila>
+<fila>
+<database_name>sys</database_name>
+<table_name>sys_config</table_name>
+<last_update>2017-10-10 00:24:11.0</last_update>
+<n_rows>6</n_rows>
+<clustered_index_size>1</clustered_index_size>
+<sum_of_other_index_sizes>0</sum_of_other_index_sizes>
+</fila>
+</innodb_table_stats>
