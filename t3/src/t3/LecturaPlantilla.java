@@ -2,6 +2,7 @@ package t3;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Map;
@@ -28,8 +29,23 @@ public class LecturaPlantilla {
 			for (String pl : plantillas) {
 				String e = cargaFichero("./templates/" + plantilla + "/" + pl);
 				String s = trataPlantilla(e, crud);
-
-				logger.info(s);
+            
+				String nombreFichero = crud.getPathSalida() + '/' +  camelCase(crud.getTabla(), true);
+		    
+				// 	en los casos de dao y vista se añade 
+				if (pl.equalsIgnoreCase("dao.pl")) {
+					nombreFichero += "Dao";
+				}
+				if (pl.equalsIgnoreCase("vista.pl")) {
+				nombreFichero += "Vista";
+				}
+				
+				File fichero = new File(nombreFichero);
+				FileOutputStream stream = new FileOutputStream(fichero, false); // true to append
+				                                                                 // false to overwrite.
+				byte[] myBytes = s.getBytes(); 
+				stream.write(myBytes);
+				stream.close();
 			}
 
 		} catch (IOException e) {

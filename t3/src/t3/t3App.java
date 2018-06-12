@@ -42,8 +42,6 @@ import org.eclipse.wb.swt.SWTResourceManager;
 
 import sun.rmi.runtime.Log;
 
-import org.eclipse.ui.forms.widgets.FormToolkit;
-import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormAttachment;
@@ -130,7 +128,7 @@ public class t3App {
 	private ConexionBean conexionBean;
 	private Text tClave;
 	private Combo comboLenguaje;
-	private final FormToolkit formToolkit = new FormToolkit(Display.getDefault());
+	
 	private Text tSalida;
 
 	/**
@@ -286,7 +284,7 @@ public class t3App {
 		fd_lblPathDeSalida.left = new FormAttachment(0, 5);
 		lblPathDeSalida.setLayoutData(fd_lblPathDeSalida);
 		lblPathDeSalida.setText("Path de Salida");
-		formToolkit.adapt(lblPathDeSalida, true, true);
+	
 
 		tSalida = new Text(grpSeleccionaLaTabla, SWT.BORDER);
 		FormData fd_tSalida = new FormData();
@@ -294,8 +292,7 @@ public class t3App {
 		fd_tSalida.top = new FormAttachment(0, 87);
 		fd_tSalida.left = new FormAttachment(0, 84);
 		tSalida.setLayoutData(fd_tSalida);
-		formToolkit.adapt(tSalida, true, true);
-
+	
 		Button btnNewButton = new Button(grpSeleccionaLaTabla, SWT.NONE);
 		FormData fd_btnNewButton = new FormData();
 		fd_btnNewButton.right = new FormAttachment(0, 316);
@@ -323,7 +320,7 @@ public class t3App {
 		fd_btnSeleccionaPath.top = new FormAttachment(lblPathDeSalida, -5, SWT.TOP);
 		fd_btnSeleccionaPath.left = new FormAttachment(tSalida, 6);
 		btnSeleccionaPath.setLayoutData(fd_btnSeleccionaPath);
-		formToolkit.adapt(btnSeleccionaPath, true, true);
+		
 		btnSeleccionaPath.setText("Selecciona Path");
 
 		Composite composite_1 = new Composite(shlGacPrctica, SWT.NONE);
