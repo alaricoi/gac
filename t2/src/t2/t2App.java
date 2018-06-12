@@ -36,9 +36,11 @@ import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.SWTResourceManager;
+
 /**
- * Clase que utilizamos para la mantener los datos de conexión 
- * capturados del interfaz de usuarios
+ * Clase que utilizamos para la mantener los datos de conexión capturados del
+ * interfaz de usuarios
+ * 
  * @author Isma
  *
  */
@@ -60,8 +62,8 @@ class ConexionBean {
 	 */
 	private String pass;
 	/**
-	 * dependiendo del SGDB se debe componer la cadena de conexion
-	 * con este valo abstraemos al usuario de saber que poner
+	 * dependiendo del SGDB se debe componer la cadena de conexion con este valo
+	 * abstraemos al usuario de saber que poner
 	 */
 	private String sufijo;
 
@@ -108,6 +110,7 @@ class ConexionBean {
 
 	/**
 	 * constructor con todos los atributos del objeto
+	 * 
 	 * @param driver
 	 * @param cadena
 	 * @param usu
@@ -123,9 +126,11 @@ class ConexionBean {
 		this.sufijo = sufijo;
 	}
 }
+
 /**
  * Clase principal que carga la pantalla y tiene los métodos y acciones
  * necesarias del trabajo
+ * 
  * @author Isma
  *
  */
@@ -152,7 +157,9 @@ public class t2App {
 	 */
 	public static void main(String[] args) {
 		try {
+
 			t2App window = new t2App();
+
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -165,13 +172,13 @@ public class t2App {
 	public void open() {
 		Display display = Display.getDefault();
 		createContents();
-		
-		Monitor primary = display.getPrimaryMonitor ();
-		Rectangle bounds = primary.getBounds ();
-		Rectangle rect = shlGacPrctica.getBounds ();
+
+		Monitor primary = display.getPrimaryMonitor();
+		Rectangle bounds = primary.getBounds();
+		Rectangle rect = shlGacPrctica.getBounds();
 		int x = bounds.x + (bounds.width - rect.width) / 2;
 		int y = bounds.y + (bounds.height - rect.height) / 2;
-		shlGacPrctica.setLocation (x, y);
+		shlGacPrctica.setLocation(x, y);
 		shlGacPrctica.open();
 		shlGacPrctica.layout();
 		while (!shlGacPrctica.isDisposed()) {
@@ -222,24 +229,23 @@ public class t2App {
 
 		tUsu = new Text(composite, SWT.BORDER);
 		tUsu.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-		
+
 		Label lblContrasea = new Label(composite, SWT.NONE);
 		lblContrasea.setText("Contrase\u00F1a");
-	
+
 		tPass = new Text(composite, SWT.BORDER | SWT.PASSWORD);
 		tPass.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
 		Button btnConectar = new Button(composite, SWT.NONE);
 		btnConectar.addSelectionListener(new SelectionAdapter() {
 			/**
-			 * Boton de conexxión de datos.
-			 * Se llama al metodo rellenaComboTablas que crea la conexion
-			 * carga el combo con las tablas 
+			 * Boton de conexxión de datos. Se llama al metodo rellenaComboTablas que crea
+			 * la conexion carga el combo con las tablas
 			 */
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				lblSalida.setText("");
-				//cambiamos el cursor de pantalla al de espera
+				// cambiamos el cursor de pantalla al de espera
 				Cursor waitCursor = new Cursor(shlGacPrctica.getDisplay(), SWT.CURSOR_WAIT);
 				try {
 					shlGacPrctica.setCursor(waitCursor);
@@ -290,9 +296,8 @@ public class t2App {
 		btnGenerarSalida.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		btnGenerarSalida.addSelectionListener(new SelectionAdapter() {
 			/**
-			 * evento del boton de generar la salida
-			 * llama a ejecutarConsulta con los datos de la tabla y el
-			 * texto del where
+			 * evento del boton de generar la salida llama a ejecutarConsulta con los datos
+			 * de la tabla y el texto del where
 			 */
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -300,14 +305,13 @@ public class t2App {
 				try {
 					// ponemos el cursor de espera mientrar se ejecuta la consulta
 					shlGacPrctica.setCursor(waitCursor);
-					//llamamos a ejecutar la consulta con los datos de la tabla selccionada
-					//y el valor del where
-					if (ejecutaConsulta(comboTablas.getText(), tWhere.getText())){
-						muestraDialogoModal(SWT.ICON_INFORMATION | SWT.OK,
-								"Información",
+					// llamamos a ejecutar la consulta con los datos de la tabla selccionada
+					// y el valor del where
+					if (ejecutaConsulta(comboTablas.getText(), tWhere.getText())) {
+						muestraDialogoModal(SWT.ICON_INFORMATION | SWT.OK, "Información",
 								"Creada la salida de " + comboTablas.getText());
-					
-				}
+
+					}
 				} finally {
 					// volvemos a poner el cursor de pantalla por defecto
 					shlGacPrctica.setCursor(null);
@@ -335,9 +339,8 @@ public class t2App {
 				String tabla = lblSalida.getText().trim();
 				// control de que haya generado la salida
 				if (tabla == null || tabla.equals("")) {
-					muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error",
-					"No se ha creado todavia la salida");
-					
+					muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error", "No se ha creado todavia la salida");
+
 					return;
 				}
 				// dialogo para seleccionar la salida de fichero
@@ -352,7 +355,7 @@ public class t2App {
 					} catch (IOException e1) {
 						muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error",
 								"No se ha podido crear el fichero: " + e1.getMessage());
-						
+
 						logger.error(e1);
 					}
 				}
@@ -403,25 +406,24 @@ public class t2App {
 	private Connection dameConexion(ConexionBean con) {
 
 		try {
-            // carga del driver o conector
+			// carga del driver o conector
 			Class.forName(con.getDriver());
 
 		} catch (ClassNotFoundException e1) {
-			muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error", 
+			muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error",
 					"No se ha podido crear la conexión: " + e1.getMessage());
-		
+
 			logger.error(e1);
 		}
 		Connection conexion = null;
 
 		try {
 			// creamos la conexion a base de datos
-			conexion = DriverManager.getConnection(con.getSufijo() + con.getCadena(), 
-					                               con.getUsu(), con.getPass());
+			conexion = DriverManager.getConnection(con.getSufijo() + con.getCadena(), con.getUsu(), con.getPass());
 		} catch (SQLException e1) {
 			muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error",
 					"No se ha podido crear la conexión: " + e1.getMessage());
-			
+
 			logger.error(e1);
 		}
 		return conexion;
@@ -443,7 +445,7 @@ public class t2App {
 			driver = "org.sqlite.JDBC";
 			sufijo = "jdbc:sqlite:";
 		}
-        
+
 		// creamos el objeto conexión con los datos seleccionados
 		conexionBean = new ConexionBean(driver, tCadenaConex.getText(), tUsu.getText(), tPass.getText(), sufijo);
 
@@ -456,11 +458,11 @@ public class t2App {
 		ResultSet rs = null;
 
 		try {
-            // extraccion del catalogo de datos del SGDB
+			// extraccion del catalogo de datos del SGDB
 			DatabaseMetaData metaDatos = conn.getMetaData();
 			rs = metaDatos.getTables(null, null, "%", null);
 			comboTablas.removeAll();
-			
+
 			while (rs.next()) {
 				// El contenido de cada columna del ResultSet se puede ver
 				// en la API, en el metodo getTables() de DataBaseMetaData.
@@ -474,7 +476,7 @@ public class t2App {
 			}
 			muestraDialogoModal(SWT.ICON_INFORMATION | SWT.OK, "Información", "Creada la conexión");
 			comboTablas.setFocus();
-			
+
 		} catch (SQLException e1) {
 			muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error", "No se ha podido crear la conexión");
 			logger.error(e1);
@@ -495,12 +497,12 @@ public class t2App {
 	 * A partir de la tabla seleccionada y la base de datos conectada se ejecuta
 	 */
 	private boolean ejecutaConsulta(String tabla, String where) {
-		
+
 		if (conexionBean == null) {
 
 			muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error",
 					"Para realizar este paso hace falta conectarse previamente");
-			
+
 			logger.error("No hay conexión creada");
 			return false;
 		}
@@ -518,7 +520,7 @@ public class t2App {
 			rs = st.executeQuery(sql);
 
 			switch (comboFormatSalida.getSelectionIndex()) {
-            // segun el combo de salida se genera el parseado
+			// segun el combo de salida se genera el parseado
 			case 0:
 				// CSV;
 				tSalida.setText(rellenaCSV(rs));
@@ -546,14 +548,13 @@ public class t2App {
 			}
 
 		} catch (SQLException e) {
-			muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error",
-					"Error al ejecutar la consulta: " + e.getMessage());
-			
+			muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error", "Error al ejecutar la consulta: " + e.getMessage());
+
 			logger.error(e);
 			return false;
-			
+
 		} finally {
-			//se liberan los objetos de conexión
+			// se liberan los objetos de conexión
 			try {
 				if (rs != null)
 					rs.close();
@@ -579,7 +580,7 @@ public class t2App {
 	 */
 	private String rellenaJSON(String tabla, ResultSet rs) throws SQLException {
 
-		String resultado = "{\""+tabla + "\":[\n";
+		String resultado = "{\"" + tabla + "\":[\n";
 		ResultSetMetaData metadata = rs.getMetaData();
 		String dato;
 		while (rs.next()) {
@@ -604,14 +605,16 @@ public class t2App {
 		resultado += "\n]}";
 		return resultado;
 	}
-/**
- * Crea la salida en xml, anidamos la marca principal con el nombre de 
- * la tabla. Cada registro ira entre la marca <fila>..</fila>
- * @param tabla
- * @param rs
- * @return
- * @throws SQLException
- */
+
+	/**
+	 * Crea la salida en xml, anidamos la marca principal con el nombre de la tabla.
+	 * Cada registro ira entre la marca <fila>..</fila>
+	 * 
+	 * @param tabla
+	 * @param rs
+	 * @return
+	 * @throws SQLException
+	 */
 	private String rellenaXML(String tabla, ResultSet rs) throws SQLException {
 
 		ResultSetMetaData metadata = rs.getMetaData();
@@ -632,27 +635,29 @@ public class t2App {
 
 		return resultado;
 	}
-/**
- * Genera el html a partir del resultset de la consulta realizada
- * @param tabla
- * @param rs
- * @return
- * @throws SQLException
- */
+
+	/**
+	 * Genera el html a partir del resultset de la consulta realizada
+	 * 
+	 * @param tabla
+	 * @param rs
+	 * @return
+	 * @throws SQLException
+	 */
 	private String rellenaHTML(String tabla, ResultSet rs) throws SQLException {
 		ResultSetMetaData metadata = rs.getMetaData();
-		//caberera del fichero
-		String resultado ="<html><body>";
+		// caberera del fichero
+		String resultado = "<html><body>";
 		resultado += "<h1>" + tabla + "</h1>\n";
-		//creación del objeto table
+		// creación del objeto table
 		resultado += "<table>\n";
 		resultado += "<tr>\n";
-       // ponemos una celda de cabecera por cada campo
+		// ponemos una celda de cabecera por cada campo
 		for (int i = 1; i <= metadata.getColumnCount(); i++) {
 			resultado += "<th>" + metadata.getColumnName(i) + "</th>\n";
 		}
 		resultado += "</tr>\n";
-        // por cada registro ponemos un tr y cada campo va enmarcado en celda (td)
+		// por cada registro ponemos un tr y cada campo va enmarcado en celda (td)
 		while (rs.next()) {
 			resultado += "<tr>\n";
 			for (int i = 1; i <= metadata.getColumnCount(); i++) {
@@ -664,17 +669,19 @@ public class t2App {
 			resultado += "</tr>\n";
 
 		}
-        // cerramos la tabla y el tag de fichero
+		// cerramos la tabla y el tag de fichero
 		resultado += "</table>\n";
-		 resultado +="</body></html>";
+		resultado += "</body></html>";
 		return resultado;
 	}
-/**
- * Metodo que genera la salida csv, el separador de campo es el ;
- * @param rs
- * @return
- * @throws SQLException
- */
+
+	/**
+	 * Metodo que genera la salida csv, el separador de campo es el ;
+	 * 
+	 * @param rs
+	 * @return
+	 * @throws SQLException
+	 */
 	private String rellenaCSV(ResultSet rs) throws SQLException {
 		ResultSetMetaData metadata = rs.getMetaData();
 		String resultado = "";
@@ -698,8 +705,10 @@ public class t2App {
 
 		return resultado;
 	}
+
 	/**
 	 * metodo generico de crear un mesaje de pantalla.
+	 * 
 	 * @param estilo
 	 * @param titulo
 	 * @param texto
