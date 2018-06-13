@@ -28,22 +28,26 @@ public class LecturaPlantilla {
 			String[] plantillas = prop.getProperty(plantilla).split(",");
 			for (String pl : plantillas) {
 				String e = cargaFichero("./templates/" + plantilla + "/" + pl);
-				String s = trataPlantilla(e, crud);
+				
+				//Se trata la platilla con el reemplazo de textos clave
+				String salidaTratada = trataPlantilla(e, crud);
             
 				String nombreFichero = crud.getPathSalida() + '/' +  camelCase(crud.getTabla(), true);
 		    
-				// 	en los casos de dao y vista se añade 
-				if (pl.equalsIgnoreCase("dao.tpl")) {
-					nombreFichero += "Dao";
-				}
-				if (pl.equalsIgnoreCase("vista.tpl")) {
-				  nombreFichero += "Vista";
+				// 	La plantilla con nombre "persistencia" llevará
+				// el nomobre de la tabla, en caso contrario se
+				// añadira al nombre de la tabla el nombre del fichero.
+				if (!pl.equalsIgnoreCase("persistencia.tpl")){
+					nombreFichero += camelCase(pl.replace(".tpl",""), true);
 				}
 				
-				File fichero = new File(nombreFichero + "." + plantilla);
+				// En la configuración de platillas el texto antes de "-" es la extensión
+				// del fichero a generar
+				String extension = plantilla.substring(0, plantilla.indexOf("-"));
+				File fichero = new File(nombreFichero + "." + extension);
 				FileOutputStream stream = new FileOutputStream(fichero, false); // true to append
 				                                                                 // false to overwrite.
-				byte[] myBytes = s.getBytes(); 
+				byte[] myBytes = salidaTratada.getBytes(); 
 				stream.write(myBytes);
 				stream.close();
 			}

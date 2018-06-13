@@ -379,7 +379,7 @@ public class t3App {
 		Connection conexion = null;
 
 		try {
-			conexion = DriverManager.getConnection(con.getSufijo() + con.getCadena(), con.getUsu(), con.getPass());
+			conexion = DriverManager.getConnection("jdbc:" + con.getSufijo() + con.getCadena(), con.getUsu(), con.getPass());
 		} catch (SQLException e1) {
 			muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error",
 					"No se ha podido crear la conexión: " + e1.getMessage());
@@ -398,12 +398,12 @@ public class t3App {
 		String sufijo = null;
 		if (comboTipo.getSelectionIndex() == 1) {
 			driver = "com.mysql.jdbc.Driver";
-			sufijo = "jdbc:mysql://";
+			sufijo = "mysql://";
 		}
 		// Es SQLite
 		if (comboTipo.getSelectionIndex() == 0) {
 			driver = "org.sqlite.JDBC";
-			sufijo = "jdbc:sqlite:";
+			sufijo = "sqlite:";
 		}
 
 		conexionBean = new ConexionBean(driver, tCadenaConex.getText(), tUsu.getText(), tPass.getText(), sufijo);
@@ -477,7 +477,8 @@ public class t3App {
 	}
 
 	/**
-	 * 
+	 * Método que se encarga de capturar los datos introducidos en la interfaz
+	 * de usuario y llamar a la clase de generación de código
 	 */
 	private void trataPlantilla() {
 		if (conexionBean == null) {
@@ -485,8 +486,34 @@ public class t3App {
 			muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error",
 					"Para realizar este paso hace falta conectarse previamente");
 
-			logger.error("No hay conexión creada");
 			return;
+		}
+		
+		if (comboLenguaje.getText() == null) {
+			muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error",
+					"No se ha seleccionado lenguaje");
+
+			return;			
+		}
+		
+		
+		if (comboTablas.getText() == null) {
+			muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error",
+					"No se ha seleccionado la tabla a exportar");
+			return;			
+		}
+		
+		
+		if (tClave.getText() == null) {
+			muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error",
+					"No se ha seleccionado la clave de la tabla");
+			return;			
+		}
+		
+		if (tClave.getText() == null) {
+			muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error",
+					"No se ha seleccionado el destino de la generación");
+			return;			
 		}
 		LecturaPlantilla plantilla = new LecturaPlantilla();
 
@@ -498,15 +525,15 @@ public class t3App {
 		 
 	     String conexion = conexionBean.getCadena();
           if (comboLenguaje.getText().equalsIgnoreCase("php")) { 				  
-			sufijo = sufijo.replace("jdbc:", "");
-			//si es sqlite, como estamos en windows hat que escapar el carecter \
+		
+        	 //si es sqlite, como estamos en windows hat que escapar el carcter \
 	        if (conexionBean.getDriver().equalsIgnoreCase("org.sqlite.JDBC")) {
 	        	conexion =   conexion.replaceAll("\\", "/");
 	          }
 	        //es mysql y la conexón se realida de forma:
 	        //mysql:dbname=employees;host=localhost;port=3306
 	        else {
-	        	sufijo = "mysql:";
+	        	
 	        	//host
 	        	String host =  conexionBean.getCadena().substring(0, conexionBean.getCadena().indexOf(":"));
 	        	//
@@ -516,10 +543,7 @@ public class t3App {
 	        	conexion = "dbname=" +dbname + ";host=" + host + ";port=" + port;
 	        }	
           }		
-          
-          
-          
-          
+   
            
           crud.setConexionBd(sufijo + conexion);
 
@@ -545,7 +569,7 @@ public class t3App {
 					map.putIfAbsent(rs.getString("COLUMN_NAME"), TRANSLADAS_TIPOS.get(rs.getInt("DATA_TYPE")));
 				}
 				crud.setCampos(map);
-
+          
 				plantilla.cargaPlatilla(comboLenguaje.getText(), crud);
 				muestraDialogoModal(SWT.ICON_INFORMATION | SWT.OK, "Correcto", "Se ha creado la salida de la platilla");
 
