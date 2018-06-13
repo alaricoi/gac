@@ -5,8 +5,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Properties;
+import java.util.stream.Stream;
 
 import org.apache.commons.lang.WordUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -45,16 +47,27 @@ public class LecturaPlantilla {
 				// del fichero a generar
 				String extension = plantilla.substring(0, plantilla.indexOf("-"));
 				File fichero = new File(nombreFichero + "." + extension);
-				FileOutputStream stream = new FileOutputStream(fichero, false); // true to append
+				//si el fichero que vamos a crear ya existe se buscan las etiquetas custom mode
+				//dentro del código. estas etiquetas deben estar en la plantilla origen
+							
+				if (fichero.exists()) {
+					 
+					 String content = new String ( Files.readAllBytes( Paths.get(nombreFichero + "." + extension) ) );
+					 
+				}
+				else {
+					FileOutputStream stream = new FileOutputStream(fichero, false); // true to append
 				                                                                 // false to overwrite.
-				byte[] myBytes = salidaTratada.getBytes(); 
-				stream.write(myBytes);
-				stream.close();
+					byte[] myBytes = salidaTratada.getBytes(); 
+					stream.write(myBytes);
+					stream.close();
+				}
+				
 			}
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error(e);
 		}
 
 	}
