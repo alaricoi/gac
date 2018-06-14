@@ -117,3 +117,198 @@
 2018-06-14 14:27:48,729 [main] INFO t3.t3App - File Found : true
 2018-06-14 14:27:48,729 [main] INFO t3.t3App - buscando ./templates/php/vista.tpl
 2018-06-14 14:27:48,729 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:46:04,549 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-14 14:46:53,538 [main] INFO t3.t3App - buscando ./templates/php/dao.tpl
+2018-06-14 14:46:53,538 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:46:53,550 [main] INFO t3.t3App - buscando ./templates/php/persistencia.tpl
+2018-06-14 14:46:53,550 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:46:53,551 [main] INFO t3.t3App - buscando ./templates/php/vista.tpl
+2018-06-14 14:46:53,551 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:47:07,084 [main] INFO t3.t3App - buscando ./templates/php/dao.tpl
+2018-06-14 14:47:07,084 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:47:07,086 [main] INFO t3.t3App - buscando ./templates/php/persistencia.tpl
+2018-06-14 14:47:07,087 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:47:07,088 [main] INFO t3.t3App - buscando ./templates/php/vista.tpl
+2018-06-14 14:47:07,088 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:47:39,868 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 14:47:39,868 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:47:39,871 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 14:47:39,871 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:47:39,872 [main] INFO t3.t3App - buscando ./templates/php-custom/vista.tpl
+2018-06-14 14:47:39,872 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:47:54,884 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 14:47:54,884 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:47:54,886 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 14:47:54,886 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:47:54,887 [main] INFO t3.t3App - buscando ./templates/php-custom/vista.tpl
+2018-06-14 14:47:54,887 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:48:16,252 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 14:48:16,253 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:48:16,254 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 14:48:16,254 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:49:57,833 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-14 14:50:33,267 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 14:50:33,267 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:50:33,279 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 14:50:33,279 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:50:40,570 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-14 14:51:28,229 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 14:51:28,229 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:51:34,078 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 14:51:34,078 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:51:56,855 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-14 14:52:37,805 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 14:52:37,805 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:53:01,013 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 14:53:01,014 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:59:10,212 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-14 14:59:37,603 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 14:59:37,603 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:59:37,615 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 14:59:37,615 [main] INFO t3.t3App - File Found : true
+2018-06-14 14:59:37,617 [main] INFO t3.t3App - buscando ./templates/php-custom/vista.tpl
+2018-06-14 14:59:37,617 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:01:06,657 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:01:06,657 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:01:06,660 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:01:06,660 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:01:06,662 [main] INFO t3.t3App - buscando ./templates/php-custom/vista.tpl
+2018-06-14 15:01:06,662 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:01:11,513 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:01:11,513 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:01:11,516 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:01:11,516 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:01:11,517 [main] INFO t3.t3App - buscando ./templates/php-custom/vista.tpl
+2018-06-14 15:01:11,518 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:03:31,555 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-14 15:04:03,291 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:04:03,291 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:04:03,303 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:04:03,303 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:04:03,306 [main] INFO t3.t3App - buscando ./templates/php-custom/vista.tpl
+2018-06-14 15:04:03,306 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:06:42,394 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-14 15:06:53,856 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-14 15:07:24,512 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:07:24,513 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:07:24,525 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:07:24,525 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:07:24,527 [main] INFO t3.t3App - buscando ./templates/php-custom/vista.tpl
+2018-06-14 15:07:24,527 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:08:06,715 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:08:06,715 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:08:06,718 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:08:06,718 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:08:06,719 [main] INFO t3.t3App - buscando ./templates/php-custom/vista.tpl
+2018-06-14 15:08:06,720 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:08:15,619 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:08:15,620 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:08:15,622 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:08:15,622 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:08:15,624 [main] ERROR t3.t3App - java.lang.StringIndexOutOfBoundsException: String index out of range: -265
+2018-06-14 15:08:18,474 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:08:18,474 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:08:18,476 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:08:18,476 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:08:18,477 [main] ERROR t3.t3App - java.lang.StringIndexOutOfBoundsException: String index out of range: -265
+2018-06-14 15:08:22,114 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:08:22,114 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:08:22,116 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:08:22,116 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:08:22,117 [main] ERROR t3.t3App - java.lang.StringIndexOutOfBoundsException: String index out of range: -265
+2018-06-14 15:08:30,379 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:08:30,379 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:08:30,381 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:08:30,381 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:08:30,382 [main] ERROR t3.t3App - java.lang.StringIndexOutOfBoundsException: String index out of range: -265
+2018-06-14 15:08:58,525 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-14 15:09:32,953 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:09:32,953 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:09:32,964 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:09:32,965 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:09:32,967 [main] ERROR t3.t3App - java.lang.StringIndexOutOfBoundsException: String index out of range: -265
+2018-06-14 15:10:14,992 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-14 15:10:39,060 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:10:39,061 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:10:39,072 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:10:39,072 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:10:39,075 [main] ERROR t3.t3App - java.lang.StringIndexOutOfBoundsException: String index out of range: -265
+2018-06-14 15:11:16,268 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:11:16,268 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:11:16,272 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:11:16,272 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:11:16,274 [main] ERROR t3.t3App - java.lang.StringIndexOutOfBoundsException: String index out of range: -949
+2018-06-14 15:11:37,804 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:11:37,804 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:11:37,807 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:11:37,807 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:11:37,808 [main] ERROR t3.t3App - java.lang.StringIndexOutOfBoundsException: String index out of range: -949
+2018-06-14 15:11:56,412 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:11:56,413 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:11:56,416 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:11:56,416 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:11:56,418 [main] ERROR t3.t3App - java.lang.StringIndexOutOfBoundsException: String index out of range: -949
+2018-06-14 15:12:02,364 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:12:02,364 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:12:02,367 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:12:02,367 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:12:02,368 [main] ERROR t3.t3App - java.lang.StringIndexOutOfBoundsException: String index out of range: -949
+2018-06-14 15:12:07,117 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:12:07,117 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:12:07,119 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:12:07,119 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:12:07,124 [main] INFO t3.t3App - buscando ./templates/php-custom/vista.tpl
+2018-06-14 15:12:07,125 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:12:25,829 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:12:25,830 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:12:25,832 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:12:25,832 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:12:25,833 [main] ERROR t3.t3App - java.lang.StringIndexOutOfBoundsException: String index out of range: -266
+2018-06-14 15:12:36,164 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:12:36,164 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:12:36,166 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:12:36,166 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:12:36,168 [main] ERROR t3.t3App - java.lang.StringIndexOutOfBoundsException: String index out of range: -266
+2018-06-14 15:12:49,113 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:12:49,113 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:12:49,115 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:12:49,115 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:12:49,117 [main] INFO t3.t3App - buscando ./templates/php-custom/vista.tpl
+2018-06-14 15:12:49,117 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:14:21,886 [main] INFO t3.t3App - D:\workspaceMio\gac\t3
+2018-06-14 15:14:56,282 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:14:56,282 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:14:56,295 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:14:56,295 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:14:56,297 [main] INFO t3.t3App - buscando ./templates/php-custom/vista.tpl
+2018-06-14 15:14:56,297 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:15:09,870 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:15:09,870 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:15:09,873 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:15:09,873 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:15:09,874 [main] INFO t3.t3App - buscando ./templates/php-custom/vista.tpl
+2018-06-14 15:15:09,875 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:15:20,069 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:15:20,069 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:15:20,072 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:15:20,073 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:15:20,074 [main] INFO t3.t3App - buscando ./templates/php-custom/vista.tpl
+2018-06-14 15:15:20,074 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:15:39,234 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:15:39,234 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:15:39,236 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:15:39,236 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:15:39,238 [main] INFO t3.t3App - buscando ./templates/php-custom/vista.tpl
+2018-06-14 15:15:39,238 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:15:56,830 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:15:56,830 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:15:56,832 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:15:56,833 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:15:56,834 [main] INFO t3.t3App - buscando ./templates/php-custom/vista.tpl
+2018-06-14 15:15:56,834 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:16:06,318 [main] INFO t3.t3App - buscando ./templates/php-custom/dao.tpl
+2018-06-14 15:16:06,318 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:16:06,320 [main] INFO t3.t3App - buscando ./templates/php-custom/persistencia.tpl
+2018-06-14 15:16:06,321 [main] INFO t3.t3App - File Found : true
+2018-06-14 15:16:06,322 [main] INFO t3.t3App - buscando ./templates/php-custom/vista.tpl
+2018-06-14 15:16:06,322 [main] INFO t3.t3App - File Found : true

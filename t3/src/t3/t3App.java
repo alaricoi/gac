@@ -574,6 +574,11 @@ public class t3App {
 				logger.error(e1);
 				muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error", "No se ha podido crear la conexión");
 				return;
+			} catch (Exception e) {
+				logger.error(e);
+				muestraDialogoModal(SWT.ICON_ERROR | SWT.OK, "Error", "No se ha podido crear "
+						+ "     la plantilla revise el correcto etiquetado custom");
+				return;
 			}
 
 		} finally {

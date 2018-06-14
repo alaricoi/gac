@@ -22,8 +22,9 @@ public class LecturaPlantilla {
 	 * 
 	 * @param plantilla
 	 * @param crud
+	 * @throws Exception 
 	 */
-	public void cargaPlatilla(String plantilla, DatosCrud crud) {
+	public void cargaPlatilla(String plantilla, DatosCrud crud) throws Exception {
 		try {
 			//ClassLoader cLoader = this.getClass().getClassLoader();
 			FileInputStream input = new FileInputStream("./conf/template.properties");
@@ -54,11 +55,10 @@ public class LecturaPlantilla {
  * @param crud
  * @param pl
  * @param salidaTratada
- * @throws IOException
- * @throws FileNotFoundException
+ * @throws Exception 
  */
 	private void salvaFuente(String plantilla, DatosCrud crud, String pl, String salidaTratada)
-			throws IOException, FileNotFoundException {
+			throws Exception {
 		String nombreFichero = crud.getPathSalida() + '/' +  camelCase(crud.getTabla(), true);
    
 		// 	La plantilla con nombre "persistencia" llevará
@@ -79,18 +79,56 @@ public class LecturaPlantilla {
 		File fichero = new File(nombreFichero + "." + extension);
 		//si el fichero que vamos a crear ya existe se buscan las etiquetas custom mode
 		//dentro del código. estas etiquetas deben estar en la plantilla origen
-					
 		if (fichero.exists()) {
-			 
-			 String content = new String ( Files.readAllBytes( Paths.get(nombreFichero + "." + extension) ) );
-			 
+		
+			String content = new String ( Files.readAllBytes( Paths.get(nombreFichero + "." + extension) ) );
+			//la plantilla tiene la posibilidad de customizar la cabecera
+			int inicioEtiqueta =  salidaTratada.indexOf("/*<<#custom_code_head#>>*/");
+			if (inicioEtiqueta > -1) {
+				
+				int finEtiqueta = salidaTratada.indexOf("/*<</#custom_code_head#>>*/");
+				
+				
+				//buscamos el texto en el fichero que se genero
+				int iC =  content.indexOf("/*<<#custom_code_head#>>*/");
+				if (iC > -1) {
+				  int fC = content.indexOf("/*<</#custom_code_head#>>*/");
+				 		    
+				  String customHead = content.substring(iC, fC);
+				   
+				   salidaTratada = salidaTratada.substring(1,inicioEtiqueta)
+						           + customHead
+						           + salidaTratada.substring(finEtiqueta);
+				   
+				}   
+				
+			} 
+			// customización del cuerpo
+			inicioEtiqueta =  salidaTratada.indexOf("/*<<#custom_code_body#>>*/");
+			if (inicioEtiqueta > -1) {
+				
+				int finEtiqueta = salidaTratada.indexOf("/*<</#custom_code_body#>>*/");
+				
+				//buscamos el texto en el fichero que se genero
+				int iC =  content.indexOf("/*<<#custom_code_body#>>*/");
+				if (iC > -1) {
+					int fC = content.indexOf("/*<</#custom_code_body#>>*/");
+					  
+				   String customHead = content.substring(iC, fC);
+				   salidaTratada = salidaTratada.substring(1,inicioEtiqueta)
+						           + customHead
+						           + salidaTratada.substring(finEtiqueta);
+				   
+				}   
+				
+			} 
+			
 		}
-		else {
-			FileOutputStream stream = new FileOutputStream(fichero, false); // false sobre escribe el fichero
-			byte[] myBytes = salidaTratada.getBytes(); 
-			stream.write(myBytes);
-			stream.close();
-		}
+		FileOutputStream stream = new FileOutputStream(fichero, false); // false sobre escribe el fichero
+		byte[] myBytes = salidaTratada.getBytes(); 
+	 	stream.write(myBytes);
+		stream.close();
+		
 	}
 
 	public String cargaFichero(String plantilla) throws IOException {
