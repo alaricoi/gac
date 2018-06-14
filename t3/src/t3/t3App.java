@@ -99,6 +99,11 @@ class ConexionBean {
 
 public class t3App {
 	private final Map<Integer, String> TRANSLADAS_TIPOS = new HashMap<Integer, String>() {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		{
 			put(Types.VARCHAR, "String");
 			put(Types.NVARCHAR, "String");

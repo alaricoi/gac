@@ -11,3 +11,11 @@
 2018-06-15 01:12:40,241 [main] INFO t3.t3App - File Found : true
 2018-06-15 01:12:40,242 [main] INFO t3.t3App - buscando ./templates/php/vista.tpl
 2018-06-15 01:12:40,242 [main] INFO t3.t3App - File Found : true
+2018-06-15 01:19:45,810 [main] INFO t3.t3App - D:\workspace\t3
+2018-06-15 01:20:43,326 [main] INFO t3.t3App - buscando ./templates/java/dao.tpl
+2018-06-15 01:20:43,326 [main] INFO t3.t3App - File Found : true
+2018-06-15 01:20:43,334 [main] ERROR t3.t3App - java.io.FileNotFoundException: test\AlbumsDao.java (El sistema no puede encontrar la ruta especificada)
+2018-06-15 01:21:40,268 [main] INFO t3.t3App - buscando ./templates/java/dao.tpl
+2018-06-15 01:21:40,268 [main] INFO t3.t3App - File Found : true
+2018-06-15 01:21:40,272 [main] INFO t3.t3App - buscando ./templates/java/persistencia.tpl
+2018-06-15 01:21:40,272 [main] INFO t3.t3App - File Found : true
