@@ -37,7 +37,7 @@ public class LecturaPlantilla {
 				String e = cargaFichero("./templates/" + plantilla + "/" + pl);
 				
 				//Se trata la platilla con el reemplazo de textos clave
-				String salidaTratada = trataPlantilla(e, crud);
+				String salidaTratada = trataPlantilla(pl, e, crud);
             
 				salvaFuente(plantilla, crud, pl, salidaTratada);
 				
@@ -150,11 +150,17 @@ public class LecturaPlantilla {
 		// File is found
 
 	}
-
-	public String trataPlantilla(String plantilla, DatosCrud crud) {
+/**
+ * 
+ * @param plantilla
+ * @param crud
+ * @return
+ */
+	public String trataPlantilla(String nombrePlantilla, String plantilla, DatosCrud crud) {
 		String plantillaTratada = plantilla;
 
 		// gesti√≥n de paquetes
+		//ser· el nombre de la platilla sin extension
 		plantillaTratada = plantillaTratada.replaceAll("<<#paquete_modelos#>>", "domain");
 
 		plantillaTratada = plantillaTratada.replaceAll("<<#paquete_daos#>>", "dao");
