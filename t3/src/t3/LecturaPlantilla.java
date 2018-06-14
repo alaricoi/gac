@@ -2,13 +2,13 @@ package t3;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Properties;
-import java.util.stream.Stream;
 
 import org.apache.commons.lang.WordUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -18,14 +18,18 @@ import org.apache.logging.log4j.Logger;
 public class LecturaPlantilla {
 	private static final Logger logger = LogManager.getLogger(t3App.class);
 
+	/**
+	 * 
+	 * @param plantilla
+	 * @param crud
+	 */
 	public void cargaPlatilla(String plantilla, DatosCrud crud) {
 		try {
 			//ClassLoader cLoader = this.getClass().getClassLoader();
 			FileInputStream input = new FileInputStream("./conf/template.properties");
-			// InputStream input = cLoader.getResourceAsStream("conf/template.properties");
+			
 			Properties prop = new Properties();
 			// load a properties file
-
 			prop.load(input);
 			String[] plantillas = prop.getProperty(plantilla).split(",");
 			for (String pl : plantillas) {
@@ -34,34 +38,7 @@ public class LecturaPlantilla {
 				//Se trata la platilla con el reemplazo de textos clave
 				String salidaTratada = trataPlantilla(e, crud);
             
-				String nombreFichero = crud.getPathSalida() + '/' +  camelCase(crud.getTabla(), true);
-		    
-				// 	La plantilla con nombre "persistencia" llevará
-				// el nomobre de la tabla, en caso contrario se
-				// añadira al nombre de la tabla el nombre del fichero.
-				if (!pl.equalsIgnoreCase("persistencia.tpl")){
-					nombreFichero += camelCase(pl.replace(".tpl",""), true);
-				}
-				
-				// En la configuración de platillas el texto antes de "-" es la extensión
-				// del fichero a generar
-				String extension = plantilla.substring(0, plantilla.indexOf("-"));
-				File fichero = new File(nombreFichero + "." + extension);
-				//si el fichero que vamos a crear ya existe se buscan las etiquetas custom mode
-				//dentro del código. estas etiquetas deben estar en la plantilla origen
-							
-				if (fichero.exists()) {
-					 
-					 String content = new String ( Files.readAllBytes( Paths.get(nombreFichero + "." + extension) ) );
-					 
-				}
-				else {
-					FileOutputStream stream = new FileOutputStream(fichero, false); // true to append
-				                                                                 // false to overwrite.
-					byte[] myBytes = salidaTratada.getBytes(); 
-					stream.write(myBytes);
-					stream.close();
-				}
+				salvaFuente(plantilla, crud, pl, salidaTratada);
 				
 			}
 
@@ -70,6 +47,50 @@ public class LecturaPlantilla {
 			logger.error(e);
 		}
 
+	}
+/**
+ * 
+ * @param plantilla
+ * @param crud
+ * @param pl
+ * @param salidaTratada
+ * @throws IOException
+ * @throws FileNotFoundException
+ */
+	private void salvaFuente(String plantilla, DatosCrud crud, String pl, String salidaTratada)
+			throws IOException, FileNotFoundException {
+		String nombreFichero = crud.getPathSalida() + '/' +  camelCase(crud.getTabla(), true);
+   
+		// 	La plantilla con nombre "persistencia" llevará
+		// el nomobre de la tabla, en caso contrario se
+		// añadira al nombre de la tabla el nombre del fichero.
+		if (!pl.equalsIgnoreCase("persistencia.tpl")){
+			nombreFichero += camelCase(pl.replace(".tpl",""), true);
+		}
+		
+		// En la configuración de platillas el texto antes de "-" es la extensión
+		// del fichero a generar
+		int ext =  plantilla.indexOf("-");
+		String extension;
+		if (ext > -1)
+			extension = plantilla.substring(0, ext);
+		else
+			extension = plantilla;
+		File fichero = new File(nombreFichero + "." + extension);
+		//si el fichero que vamos a crear ya existe se buscan las etiquetas custom mode
+		//dentro del código. estas etiquetas deben estar en la plantilla origen
+					
+		if (fichero.exists()) {
+			 
+			 String content = new String ( Files.readAllBytes( Paths.get(nombreFichero + "." + extension) ) );
+			 
+		}
+		else {
+			FileOutputStream stream = new FileOutputStream(fichero, false); // false sobre escribe el fichero
+			byte[] myBytes = salidaTratada.getBytes(); 
+			stream.write(myBytes);
+			stream.close();
+		}
 	}
 
 	public String cargaFichero(String plantilla) throws IOException {

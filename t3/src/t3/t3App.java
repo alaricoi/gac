@@ -2,9 +2,7 @@ package t3;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -24,6 +22,9 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Cursor;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -31,7 +32,6 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
@@ -39,12 +39,6 @@ import org.eclipse.swt.widgets.Monitor;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.SWTResourceManager;
-
-import sun.rmi.runtime.Log;
-
-import org.eclipse.swt.layout.FormLayout;
-import org.eclipse.swt.layout.FormData;
-import org.eclipse.swt.layout.FormAttachment;
 
 class ConexionBean {
 	private String driver;
@@ -198,7 +192,7 @@ public class t3App {
 		lblCadenaDeConesn.setText("Cadena de Conexi\u00F3n");
 
 		tCadenaConex = new Text(composite, SWT.BORDER);
-		tCadenaConex.setText("D:\\workspace\\t3\\data\\test.db");
+		tCadenaConex.setText("");
 		tCadenaConex.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
 		Label lblUsuario = new Label(composite, SWT.NONE);
@@ -524,15 +518,18 @@ public class t3App {
 		  String sufijo = conexionBean.getSufijo();
 		 
 	     String conexion = conexionBean.getCadena();
-          if (comboLenguaje.getText().equalsIgnoreCase("php")) { 				  
+	   //si es sqlite, como estamos en windows hat que escapar el caracter "\"
+	     if (conexionBean.getDriver().equalsIgnoreCase("org.sqlite.JDBC")) {
+	        	conexion =   conexion.replace("\\", "\\\\");
+	      }
+	     
+	      // si es php se debe tratart la conexión de otra manera a java 
+          if (comboLenguaje.getText().toLowerCase().startsWith("php")) { 				  
 		
-        	 //si es sqlite, como estamos en windows hat que escapar el carcter \
-	        if (conexionBean.getDriver().equalsIgnoreCase("org.sqlite.JDBC")) {
-	        	conexion =   conexion.replaceAll("\\", "/");
-	          }
+        	    
 	        //es mysql y la conexón se realida de forma:
 	        //mysql:dbname=employees;host=localhost;port=3306
-	        else {
+	        if (!conexionBean.getDriver().equalsIgnoreCase("org.sqlite.JDBC")) {
 	        	
 	        	//host
 	        	String host =  conexionBean.getCadena().substring(0, conexionBean.getCadena().indexOf(":"));
@@ -571,7 +568,7 @@ public class t3App {
 				crud.setCampos(map);
           
 				plantilla.cargaPlatilla(comboLenguaje.getText(), crud);
-				muestraDialogoModal(SWT.ICON_INFORMATION | SWT.OK, "Correcto", "Se ha creado la salida de la platilla");
+				muestraDialogoModal(SWT.ICON_INFORMATION | SWT.OK, "Correcto", "Se ha creado la salida de la plantilla");
 
 			} catch (SQLException e1) {
 				logger.error(e1);
