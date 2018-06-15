@@ -3,7 +3,9 @@ package <<#paquete_daos#>>;
 import java.sql.*;
 import java.util.*;
 import <<#paquete_modelos#>>.*;
+/*<<#custom_code_head#>>*/
 
+/*<</#custom_code_head#>>*/
 
 
 public class <<#nombreClase#>>Dao

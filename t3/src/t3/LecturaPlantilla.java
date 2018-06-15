@@ -18,7 +18,7 @@ public class LecturaPlantilla {
 	private static final Logger logger = LogManager.getLogger(t3App.class);
 
 	/**
-	 * 
+	 * Metodo publico que desencadena la generación de código
 	 * @param plantilla
 	 * @param crud
 	 * @throws Exception
@@ -159,7 +159,7 @@ public class LecturaPlantilla {
 	}
 
 	/**
-	 * 
+	 * reemplazar los diferentes tags configurados por los datos seleccionados de generación del CRUD
 	 * @param plantilla
 	 * @param crud
 	 * @return

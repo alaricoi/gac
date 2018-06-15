@@ -38,12 +38,15 @@ public class DatosCrud implements Serializable{
     private String usuarioBd;
 
     /**
-     *
+     * clave de conexión a bd
      */
     private String claveBd;
 
-
+/**
+     * directorio raíz donde queremos exportar el código
+     */
     private String pathSalida;
+
 
     public String getTabla() {
         return tabla;
