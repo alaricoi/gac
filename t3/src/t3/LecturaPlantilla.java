@@ -21,25 +21,25 @@ public class LecturaPlantilla {
 	 * 
 	 * @param plantilla
 	 * @param crud
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	public void cargaPlatilla(String plantilla, DatosCrud crud) throws Exception {
 		try {
-			//ClassLoader cLoader = this.getClass().getClassLoader();
+			// ClassLoader cLoader = this.getClass().getClassLoader();
 			FileInputStream input = new FileInputStream("./conf/template.properties");
-			
+
 			Properties prop = new Properties();
 			// load a properties file
 			prop.load(input);
 			String[] plantillas = prop.getProperty(plantilla).split(",");
 			for (String pl : plantillas) {
 				String e = cargaFichero("./templates/" + plantilla + "/" + pl);
-				
-				//Se trata la platilla con el reemplazo de textos clave
+
+				// Se trata la platilla con el reemplazo de textos clave
 				String salidaTratada = trataPlantilla(pl, e, crud);
-            
+
 				salvaFuente(plantilla, crud, pl, salidaTratada);
-				
+
 			}
 
 		} catch (IOException e) {
@@ -48,95 +48,103 @@ public class LecturaPlantilla {
 		}
 
 	}
-/**
- * 
- * @param plantilla
- * @param crud
- * @param pl
- * @param salidaTratada
- * @throws Exception 
- */
-	private void salvaFuente(String plantilla, DatosCrud crud, String pl, String salidaTratada)
-			throws Exception {
-		String nombreFichero = crud.getPathSalida() + '/' +  camelCase(crud.getTabla(), true);
-   
-		// 	La plantilla con nombre "persistencia" llevará
-		// el nomobre de la tabla, en caso contrario se
-		// añadira al nombre de la tabla el nombre del fichero.
-		if (!pl.equalsIgnoreCase("persistencia.tpl")){
-			nombreFichero += camelCase(pl.replace(".tpl",""), true);
-		}
-		
+
+	/**
+	 * 
+	 * @param plantilla
+	 * @param crud
+	 * @param pl
+	 * @param salidaTratada
+	 * @throws Exception
+	 */
+	private void salvaFuente(String plantilla, DatosCrud crud, String pl, String salidaTratada) throws Exception {
+
 		// En la configuración de platillas el texto antes de "-" es la extensión
 		// del fichero a generar
-		int ext =  plantilla.indexOf("-");
+		int ext = plantilla.indexOf("-");
 		String extension;
 		if (ext > -1)
 			extension = plantilla.substring(0, ext);
 		else
 			extension = plantilla;
-		File fichero = new File(nombreFichero + "." + extension);
-		//si el fichero que vamos a crear ya existe se buscan las etiquetas custom mode
-		//dentro del código. estas etiquetas deben estar en la plantilla origen
-		if (fichero.exists()) {
+		String nombreFichero= "";
+		String directoriodestino = "";
 		
-			String content = new String ( Files.readAllBytes( Paths.get(nombreFichero + "." + extension) ) );
-			//la plantilla tiene la posibilidad de customizar la cabecera
-			int inicioEtiqueta =  salidaTratada.indexOf("/*<<#custom_code_head#>>*/");
+        if (extension.equals("java")) {
+        	directoriodestino = crud.getPathSalida() + '/' + pl.replace(".tpl", "").toLowerCase();
+        }	
+        else {
+        	directoriodestino = crud.getPathSalida(); 
+        }
+        compruebaCarpeta(directoriodestino);
+        
+        nombreFichero = directoriodestino + '/' + camelCase(crud.getTabla(), true);
+		// La plantilla con nombre "persistencia" llevará
+		// el nomobre de la tabla, en caso contrario se
+		// añadira al nombre de la tabla el nombre del fichero.
+		if (!pl.equalsIgnoreCase("persistencia.tpl")) {
+			nombreFichero += camelCase(pl.replace(".tpl", ""), true);
+		}
+
+		File fichero = new File(nombreFichero + "." + extension);
+		// si el fichero que vamos a crear ya existe se buscan las etiquetas custom mode
+		// dentro del código. estas etiquetas deben estar en la plantilla origen
+		if (fichero.exists()) {
+
+			String content = new String(Files.readAllBytes(Paths.get(nombreFichero + "." + extension)));
+			// la plantilla tiene la posibilidad de customizar la cabecera
+			int inicioEtiqueta = salidaTratada.indexOf("/*<<#custom_code_head#>>*/");
 			if (inicioEtiqueta > -1) {
-				
+
 				int finEtiqueta = salidaTratada.indexOf("/*<</#custom_code_head#>>*/");
-				
-				
-				//buscamos el texto en el fichero que se genero
-				int iC =  content.indexOf("/*<<#custom_code_head#>>*/");
+
+				// buscamos el texto en el fichero que se genero
+				int iC = content.indexOf("/*<<#custom_code_head#>>*/");
 				if (iC > -1) {
-				  int fC = content.indexOf("/*<</#custom_code_head#>>*/");
-				 		    
-				  String customHead = content.substring(iC, fC);
-				   
-				   salidaTratada = salidaTratada.substring(1,inicioEtiqueta)
-						           + customHead
-						           + salidaTratada.substring(finEtiqueta);
-				   
-				}   
-				
-			} 
+					int fC = content.indexOf("/*<</#custom_code_head#>>*/");
+
+					String customHead = content.substring(iC, fC);
+
+					salidaTratada = salidaTratada.substring(1, inicioEtiqueta) + customHead
+							+ salidaTratada.substring(finEtiqueta);
+
+				}
+
+			}
 			// customización del cuerpo
-			inicioEtiqueta =  salidaTratada.indexOf("/*<<#custom_code_body#>>*/");
+			inicioEtiqueta = salidaTratada.indexOf("/*<<#custom_code_body#>>*/");
 			if (inicioEtiqueta > -1) {
-				
+
 				int finEtiqueta = salidaTratada.indexOf("/*<</#custom_code_body#>>*/");
-				
-				//buscamos el texto en el fichero que se genero
-				int iC =  content.indexOf("/*<<#custom_code_body#>>*/");
+
+				// buscamos el texto en el fichero que se genero
+				int iC = content.indexOf("/*<<#custom_code_body#>>*/");
 				if (iC > -1) {
 					int fC = content.indexOf("/*<</#custom_code_body#>>*/");
-					  
-				   String customHead = content.substring(iC, fC);
-				   salidaTratada = salidaTratada.substring(1,inicioEtiqueta)
-						           + customHead
-						           + salidaTratada.substring(finEtiqueta);
-				   
-				}   
-				
-			} 
-			
+
+					String customHead = content.substring(iC, fC);
+					salidaTratada = salidaTratada.substring(1, inicioEtiqueta) + customHead
+							+ salidaTratada.substring(finEtiqueta);
+
+				}
+
+			}
+
 		}
 		FileOutputStream stream = new FileOutputStream(fichero, false); // false sobre escribe el fichero
-		byte[] myBytes = salidaTratada.getBytes(); 
-	 	stream.write(myBytes);
+		byte[] myBytes = salidaTratada.getBytes();
+		stream.write(myBytes);
 		stream.close();
-		
+
 	}
 
 	public String cargaFichero(String plantilla) throws IOException {
 
-	//	ClassLoader cLoader = this.getClass().getClassLoader();
+		// ClassLoader cLoader = this.getClass().getClassLoader();
 
 		try {
 			logger.info("buscando " + plantilla);
-			//File file = new File(cLoader.getResource(plantilla).getFile());
+			// File file = new File(cLoader.getResource(plantilla).getFile());
 			File file = new File(plantilla);
 			logger.info("File Found : " + file.exists());
 			// Read File Content
@@ -149,18 +157,19 @@ public class LecturaPlantilla {
 		// File is found
 
 	}
-/**
- * 
- * @param plantilla
- * @param crud
- * @return
- */
+
+	/**
+	 * 
+	 * @param plantilla
+	 * @param crud
+	 * @return
+	 */
 	public String trataPlantilla(String nombrePlantilla, String plantilla, DatosCrud crud) {
 		String plantillaTratada = plantilla;
 
 		// gestiÃ³n de paquetes
-		//será el nombre de la platilla sin extension
-		plantillaTratada = plantillaTratada.replaceAll("<<#paquete_modelos#>>", "domain");
+		// será el nombre de la platilla sin extension
+		plantillaTratada = plantillaTratada.replaceAll("<<#paquete_modelos#>>","persistencia");
 
 		plantillaTratada = plantillaTratada.replaceAll("<<#paquete_daos#>>", "dao");
 
@@ -275,4 +284,20 @@ public class LecturaPlantilla {
 		return salida;
 	}
 
+	/**
+	 * coprueba si existe la carpeta y si no la crea
+	 * @param carpeta
+	 * @throws Exception
+	 */
+	private void compruebaCarpeta(String carpeta) throws Exception{
+        File folder = new File(carpeta);
+
+           if (!folder.exists()){
+              if (!folder.isDirectory()){
+                folder.mkdirs();
+               
+               }
+
+            }
+   }
 }

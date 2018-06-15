@@ -14,11 +14,13 @@ fin de las etiquetas de custom code, todo lo que quede fuera
 de este codigo será reemplazo en una nueva generación
 */
 
-class <<#nombreClase#>>
+class Artists
 {
-    <<#seccion_loop_campos#>>
-    private $<<#nombre_campo#>>;
-    <</#seccion_loop_campos#>>
+    
+    private $artistid;
+    
+    private $name;
+    
 
     public function __GET($k){ return $this->$k; }
     public function __SET($k, $v){ return $this->$k = $v; }
